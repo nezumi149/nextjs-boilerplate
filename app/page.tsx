@@ -1,11 +1,5 @@
 import Image from "next/image";
 
-fs.readFile('mytext.txt',"utf-8",function(err,data)){
-  if(err) throw err;
-  var array = Array.from(data) //convert char array
-  console.log(array)
-}
-
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
