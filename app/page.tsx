@@ -103,9 +103,11 @@ export default function Home() {
               -&gt;
             </span>
           </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50 text-balance`}>
-            Help 3
-          </p>
+          <div class="container">
+            <textarea class="story"></textarea>
+            <button id="set-text" type="button">Set text content</button>
+            <button id="clear-text" type="button">Clear text content</button>
+          </div>
         </a>
       </div>
     </main>
