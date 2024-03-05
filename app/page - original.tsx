@@ -1,9 +1,5 @@
 import Image from "next/image";
 
-var fs = require("fs");
-var text = fs.readFileSync("./mytext.txt", "utf-8");
-var textByLine = text.split("\n")
-
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
