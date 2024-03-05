@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-fs.readFile('mytext.txt',"utf-8",function(err,data){
+fs.readFile('mytext.txt',"utf-8",function(err,data)){
   if(err) throw err;
   var array = Array.from(data) //convert char array
   console.log(array)
