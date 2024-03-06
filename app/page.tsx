@@ -24,7 +24,7 @@ let random = array.sort(() => .5 - Math.random()).slice(0,n)
 });
 
 const clearText = document.body.querySelector("#clear-text");
-clearText.addEventListener("click", () => {
+clearText!.addEventListener("click", () => {
   story!.textContent = "";
 });
 
