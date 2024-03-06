@@ -1,6 +1,6 @@
 function Button(props){
   return (
-    <button id={props.id} type="button">{props.title}}</button>
+    <button id={props.id} type="button">{props.title}</button>
   );
 }
 
