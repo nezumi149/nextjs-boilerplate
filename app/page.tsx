@@ -1,23 +1,24 @@
 import Image from "next/image";
 
 export default function Home() {
+  if (process.browser) {
+    const story = document.body.querySelector(".story");
+    const array = ['a','b','c','d']
 
-  const story = document.body.querySelector(".story");
-  const array = ['a','b','c','d']
-  
-  const setText = document.body.querySelector("#set-text");
-  setText!.addEventListener("click", () => {
-    
-  const shuffled = array.sort(() => 0.5 - Math.random());
-  let n = 2
-  let random = array.sort(() => .5 - Math.random()).slice(0,n)
-    story!.textContent = random.toString();
-  });
-  
-  const clearText = document.body.querySelector("#clear-text");
-  clearText!.addEventListener("click", () => {
-    story!.textContent = "";
-  });
+    const setText = document.body.querySelector("#set-text");
+    setText!.addEventListener("click", () => {
+      
+    const shuffled = array.sort(() => 0.5 - Math.random());
+    let n = 2
+    let random = array.sort(() => .5 - Math.random()).slice(0,n)
+      story!.textContent = random.toString();
+    });
+
+    const clearText = document.body.querySelector("#clear-text");
+    clearText!.addEventListener("click", () => {
+      story!.textContent = "";
+    });
+  }
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
