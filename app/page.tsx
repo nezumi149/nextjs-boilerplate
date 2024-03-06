@@ -11,21 +11,23 @@ const Home = () => {
   )
 }
 
-const story = document.body.querySelector(".story");
-const array = ['a','b','c','d']
-
-const setText = document.body.querySelector("#set-text");
-setText!.addEventListener("click", () => {
+if (process.browser) {
+  const story = document.body.querySelector(".story");
+  const array = ['a','b','c','d']
   
-const shuffled = array.sort(() => 0.5 - Math.random());
-let n = 2
-let random = array.sort(() => .5 - Math.random()).slice(0,n)
-  story!.textContent = random.toString();
-});
-
-const clearText = document.body.querySelector("#clear-text");
-clearText!.addEventListener("click", () => {
-  story!.textContent = "";
-});
+  const setText = document.body.querySelector("#set-text");
+  setText!.addEventListener("click", () => {
+    
+  const shuffled = array.sort(() => 0.5 - Math.random());
+  let n = 2
+  let random = array.sort(() => .5 - Math.random()).slice(0,n)
+    story!.textContent = random.toString();
+  });
+  
+  const clearText = document.body.querySelector("#clear-text");
+  clearText!.addEventListener("click", () => {
+    story!.textContent = "";
+  });
+}
 
 export default Home;
