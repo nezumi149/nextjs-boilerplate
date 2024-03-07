@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from 'react';
 
 function Button({title, id}: {title:any, id: string}){
