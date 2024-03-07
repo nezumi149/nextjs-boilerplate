@@ -15,10 +15,14 @@ function TextArea({text, id}: {text:string, id:string}){
 }
 
 const Home = () => {
-  const [textbox, setText] = useState(0);
+  const [textbox, setText] = useState("");
 
   function clickClear(){
     setText("");
+  }
+
+  function clickSetText(){
+    setText("default text");
   }
 
   return(
@@ -27,6 +31,9 @@ const Home = () => {
           <textarea>{textbox}</textarea>
           <button onClick={clickClear}>
             Clear Text
+          </button>
+          <button onClick={clickSetText}>
+            Set Text
           </button>
         </div>
     </main>
