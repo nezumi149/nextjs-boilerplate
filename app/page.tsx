@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from 'react';
+import wordList from '@/resources/wordlist.json';
+console.log(wordList[2]);
 
 const Home = () => {
   const [textbox, setText] = useState("");
