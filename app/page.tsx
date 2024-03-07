@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import wordList from '@/resources/wordlist.json';
-import * as _ from 'underscore';
+import * as _ from 'underscore'; 
 
 const Home = () => {
   const [textbox, setText] = useState("");
