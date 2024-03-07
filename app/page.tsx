@@ -14,7 +14,7 @@ const Home = () => {
     console.log(textbox);
   }
 
-  function updateText({value}:{value: any}){
+  function updateText({value}:{value: string}){
     setText(value);
   }
 
