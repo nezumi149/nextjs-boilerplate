@@ -16,6 +16,9 @@ const Home = () => {
           <button onClick={() => setText("")}>
             Clear Text
           </button>
+          <p>
+            The current state is: {textbox}
+          </p>
         </div>
     </main>
   )
