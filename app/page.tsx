@@ -1,6 +1,6 @@
-function Button({title}){
+function Button({title, id}: {title:any, id: any}){
   return (
-    <button type="button">{title}</button>
+    <button id={id} type="button">{title}</button>
   );
 }
 
