@@ -23,6 +23,7 @@ const Home = () => {
 
   function clickSetText(){
     setText("default text");
+    console.log(textbox);
   }
 
   return(
