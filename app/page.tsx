@@ -16,22 +16,15 @@ const Home = () => {
 
   return(
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gridGap: 20 }} className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-          <div>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gridGap: 20}} className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
+          <div id='fourLeafOuter' style={{ fontSize: 60, fontFamily: 'aga-arabesque', color: 'gray'}}>
             <Input text={textA} setText={setTextA} disabled={disabled}/>
-            <Leaf words={wordSample.slice(0,4)}  disabled={disabled}/>
-          </div>
-          <div>
-            <Input text={textB} setText={setTextB} disabled={disabled}/>
-            <Leaf words={wordSample.slice(4,8)}  disabled={disabled}/>
-          </div>
-          <div>
-            <Input text={textC} setText={setTextC} disabled={disabled} />
-            <Leaf words={wordSample.slice(8,12)}  disabled={disabled}/>
-          </div>
-          <div>
-            <Input text={textD} setText={setTextD} disabled={disabled} />
-            <Leaf words={wordSample.slice(12,16)}  disabled={disabled}/> 
+            <div id='fourLeafInner'style={{ height:'339px', width:'339px', position:'relative'}}>
+            <Leaf words={wordSample.slice(0,4)}  disabled={disabled} style={{ position: 'absolute', top:0, left: 0}}/>
+            <Leaf words={wordSample.slice(4,8)}  disabled={disabled} style={{ position: 'absolute', top:0, right: 0}}/>
+            <Leaf words={wordSample.slice(8,12)}  disabled={disabled} style={{ position: 'absolute', bottom:0, right: 0}}/>
+            <Leaf words={wordSample.slice(12,16)}  disabled={disabled} style={{ position: 'absolute', bottom:0, left: 0}}/> 
+            </div>
           </div>
         </div>
         <button onClick={() => setDisabled(!disabled)}>
