@@ -3,7 +3,8 @@
 import { useState } from 'react';
 import wordList from '@/resources/wordlist.json';
 import Input from "./Input";
-import * as _ from 'underscore'; 
+import * as _ from 'underscore';
+const wordSample = _.sample(wordList, 20);
 
 const Home = () => {
   const [textbox, setText] = useState("");
@@ -11,8 +12,6 @@ const Home = () => {
   function updateText(value: string){
     setText(value);
   }
-
-  const wordSample = _.sample(wordList, 20);
 
   return(
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
