@@ -22,12 +22,15 @@ const Home = () => {
           </div>
           <div>
             <Input text={textB} setText={setTextB} />
+            <Leaf words={wordSample.slice(4,8)} />
           </div>
           <div>
             <Input text={textC} setText={setTextC} />
+            <Leaf words={wordSample.slice(8,12)} />
           </div>
           <div>
             <Input text={textD} setText={setTextD} />
+            <Leaf words={wordSample.slice(12,16)} />
           </div>
         </div>
     </main>
