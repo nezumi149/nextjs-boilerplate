@@ -7,21 +7,21 @@ import * as _ from 'underscore';
 const wordSample = _.sample(wordList, 20);
 
 const Home = () => {
-  const [textbox, setText] = useState("");
-
-  function updateText(value: string){
-    setText(value);
-  }
+  const [textA, setTextA] = useState("");
+  const [textB, setTextB] = useState("");
+  const [textC, setTextC] = useState("");
+  const [textD, setTextD] = useState("");
 
   return(
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
         <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-          <Input text={textbox} setText={setText} />
-          <button onClick={() => setText("")}>
-            Clear Text 
-          </button>
+          <Input text={textA} setText={setTextA} />
+          <Input text={textB} setText={setTextB} />
+          <Input text={textC} setText={setTextC} />
+          <Input text={textD} setText={setTextD} />
           <p>
-            The current state is: {textbox}
+            The current state is: <br>
+            {textA} <br>{textB} <br>{textC} <br>{textD} <br>
           </p>
         </div>
         <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
