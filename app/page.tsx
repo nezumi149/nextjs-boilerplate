@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import wordList from '@/resources/wordlist.json';
 import Input from "./Input";
+import Leaf from "./Leaf";
 import * as _ from 'underscore';
 const wordSample = _.sample(wordList, 20);
 
@@ -14,15 +15,16 @@ const Home = () => {
 
   return(
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gridGap: 20 }} className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gridGap: 20 }} className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
           <div>
             <Input text={textA} setText={setTextA} />
-            <p>
-              Words: {wordSample[0]} {wordSample[1]} {wordSample[2]} {wordSample[3]}   
-            </p>
+            <Leaf words={wordSample.slice(0,4)}/>
           </div>
           <div>
             <Input text={textB} setText={setTextB} />
+            <p>
+              Words: {wordSample[4]} {wordSample[5]} {wordSample[]} {wordSample[3]}   
+            </p>
           </div>
           <div>
             <Input text={textC} setText={setTextC} />
