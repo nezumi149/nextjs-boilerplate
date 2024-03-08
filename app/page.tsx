@@ -18,13 +18,9 @@ const Home = () => {
         <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gridGap: 20 }} className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
           <div>
             <Input text={textA} setText={setTextA} />
-            <Leaf words={wordSample.slice(0,4)}/>
           </div>
           <div>
             <Input text={textB} setText={setTextB} />
-            <p>
-              Words: {wordSample[4]} {wordSample[5]} {wordSample[]} {wordSample[3]}   
-            </p>
           </div>
           <div>
             <Input text={textC} setText={setTextC} />
