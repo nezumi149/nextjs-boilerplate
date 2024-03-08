@@ -5,7 +5,7 @@ const Leaf = (props) => {
     const [rotation, setRotation] = useState(0);
   
     return (
-      <div style={{ height:'200px' width:'200px'}} onClick={() => if(props.disabled){setRotation(rotation + 1)}}>
+      <div style={{ height:'200px', width:'200px'}} onClick={() => if(props.disabled){setRotation(rotation + 1)}}>
         <p style={{ position: 'absolute', top:'0%', width:'100%', text-align:'center'}}>
             {props.words[(0+rotation)%4]}
         </p>
