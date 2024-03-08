@@ -6,7 +6,7 @@ const Leaf = (props) => {
   
     return (
        <div>
-        <div style={{ height:'200px', width:'200px'}} onClick={() => setRotation(rotation + (props.disabled?1:0))}>
+        <div style={{ height:'200px', width:'200px', backgroundColor:'#DDFFDD', position:'relative'}} onClick={() => setRotation(rotation + (props.disabled?1:0))}>
             <p style={{ position: 'absolute', top:'0%', width:'100%', textAlign:'center'}}>
                 {props.words[(0+rotation)%4]}
             </p>
