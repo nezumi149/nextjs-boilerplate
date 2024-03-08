@@ -5,7 +5,7 @@ const Input = (props) => {
   
     return (
       <div>
-        <input value={props.text} onChange={handleChange} />
+        <input value={props.text} onChange={handleChange} disabled={props.disabled}/>
         <button onClick={() => props.setText("")}>Clear</button>
       </div>
     );

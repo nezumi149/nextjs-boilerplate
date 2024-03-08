@@ -12,6 +12,7 @@ const Home = () => {
   const [textB, setTextB] = useState("");
   const [textC, setTextC] = useState("");
   const [textD, setTextD] = useState("");
+  const [disabled, setDisabled] = useState(false);
 
   return(
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
@@ -33,6 +34,9 @@ const Home = () => {
             <Leaf words={wordSample.slice(12,16)} /> 
           </div>
         </div>
+        <button onClick={() => setDisabled(!disabled)}>
+          {disabled ? "Submit" : "Unlock"}
+        </button>
     </main>
   )
 }
