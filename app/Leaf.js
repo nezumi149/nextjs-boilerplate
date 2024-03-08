@@ -7,16 +7,16 @@ const Leaf = (props) => {
     return (
        <div>
         <div style={{ height:'167px', width:'167px', backgroundColor:'#DDFFDD', position:'relative'}} onClick={() => setRotation(rotation + (props.disabled?1:0))}>
-            <p style={{ position: 'absolute', top:'0%', width:'100%', textAlign:'center'}}>
+            <p style={{ display:'inline-block', position: 'absolute', top:'0%', width:'100%', textAlign:'center'}}>
                 {props.words[(0+rotation)%4]}
             </p>
-            <p style={{ position: 'absolute', top:'50%', right: '15px', transform: [{ rotate: '90deg' }]}}>
+            <p style={{ display:'inline-block', position: 'absolute', top:'60%', right: '15px', transform: [{ rotate: '90deg' }]}}>
                 {props.words[(1+rotation)%4]}
             </p>
-            <p style={{ position: 'absolute', bottom:'0%', width:'100%', textAlign:'center',  transform: [{ rotate: '180deg' }]}}>
+            <p style={{ display:'inline-block', position: 'absolute', bottom:'0%', width:'100%', textAlign:'center',  transform: [{ rotate: '180deg' }]}}>
                 {props.words[(2+rotation)%4]}
             </p>
-            <p style={{ position: 'absolute', top:'50%', left: '15px',  transform: [{ rotate: '270deg' }]}}>
+            <p style={{ display:'inline-block', position: 'absolute', top:'40%', left: '15px',  transform: [{ rotate: '270deg' }]}}>
                 {props.words[(3+rotation)%4]}
             </p>
         </div>
