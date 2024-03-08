@@ -30,7 +30,7 @@ const Home = () => {
           </div>
           <div>
             <Input text={textD} setText={setTextD} />
-            <Leaf words={wordSample.slice(12,16)} />
+            <Leaf words={wordSample.slice(12,16)} /> 
           </div>
         </div>
     </main>
