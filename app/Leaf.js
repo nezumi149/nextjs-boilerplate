@@ -6,7 +6,7 @@ const Leaf = (props) => {
   
     return (
       <div>
-        <p>
+        <p onClick={() => setRotation(rotation + 1)}>
             {props.words[(0+rotation)%4]}
             {props.words[(1+rotation)%4]}
             {props.words[(2+rotation)%4]}
