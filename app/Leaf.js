@@ -16,4 +16,4 @@ const Leaf = (props) => {
     );
   };
 
-export default Input;
+export default Leaf;
