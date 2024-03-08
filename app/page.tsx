@@ -18,7 +18,7 @@ const Home = () => {
           <div>
             <Input text={textA} setText={setTextA} />
             <p>
-              Words: {wordsample[0]} {wordsample[1]} {wordsample[2]} {wordsample[3]}   
+              Words: {wordSample[0]} {wordSample[1]} {wordSample[2]} {wordSample[3]}   
             </p>
           </div>
           <div>
