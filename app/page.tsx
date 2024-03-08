@@ -18,7 +18,7 @@ const Home = () => {
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
         <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gridGap: 20 }} className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
           <div>
-            <Input text={textA} setText={setTextA} />
+            <Input text={textA} setText={setTextA} disabled={disabled}/>
             <Leaf words={wordSample.slice(0,4)} />
           </div>
           <div>
