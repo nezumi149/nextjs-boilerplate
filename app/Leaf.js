@@ -10,13 +10,13 @@ const Leaf = (props) => {
             <p style={{ display:'inline-block', position: 'absolute', top:'0%', width:'100%', textAlign:'center'}}>
                 {props.words[(0+rotation)%4]}
             </p>
-            <p style={{ display:'inline-block', position: 'absolute', top:'60%', right: '15px', transform: [{ rotate: '90deg' }]}}>
+            <p style={{ display:'inline-block', position: 'absolute', top:'55%', right: '15px', webkitTransform: [{ rotate: '90deg' }]}}>
                 {props.words[(1+rotation)%4]}
             </p>
-            <p style={{ display:'inline-block', position: 'absolute', bottom:'0%', width:'100%', textAlign:'center',  transform: [{ rotate: '180deg' }]}}>
+            <p style={{ display:'inline-block', position: 'absolute', bottom:'0%', width:'100%', textAlign:'center',  webkitTransform: [{ rotate: '180deg' }]}}>
                 {props.words[(2+rotation)%4]}
             </p>
-            <p style={{ display:'inline-block', position: 'absolute', top:'40%', left: '15px',  transform: [{ rotate: '270deg' }]}}>
+            <p style={{ display:'inline-block', position: 'absolute', top:'45%', left: '15px',  webkitTransform: [{ rotate: '270deg' }]}}>
                 {props.words[(3+rotation)%4]}
             </p>
         </div>
