@@ -14,19 +14,22 @@ const Home = () => {
 
   return(
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-        <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-          <Input text={textA} setText={setTextA} />
-          <Input text={textB} setText={setTextB} />
-          <Input text={textC} setText={setTextC} />
-          <Input text={textD} setText={setTextD} />
-          <p>
-            The current state is:
-          </p>
-        </div>
-        <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-          <p className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30">
-            Word samples list: {wordSample}
-          </p>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gridGap: 20 }} className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
+          <div>
+            <Input text={textA} setText={setTextA} />
+            <p>
+              Words: {wordsample[0]} {wordsample[1]} {wordsample[2]} {wordsample[3]}   
+            </p>
+          </div>
+          <div>
+            <Input text={textB} setText={setTextB} />
+          </div>
+          <div>
+            <Input text={textC} setText={setTextC} />
+          </div>
+          <div>
+            <Input text={textD} setText={setTextD} />
+          </div>
         </div>
     </main>
   )
