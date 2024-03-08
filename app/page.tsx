@@ -2,15 +2,14 @@
 
 import { useState } from 'react';
 import wordList from '@/resources/wordlist.json';
+import Input from "./Input";
 import * as _ from 'underscore'; 
 
 const Home = () => {
-  const [textboxes, setText] = useState(["", "", "", ""]);
+  const [textbox, setText] = useState("");
 
-  function updateText(value: string, index: number){
-    var tempText = textboxes;
-    tempText[index] = value;
-    setText(tempText);
+  function updateText(value: string){
+    setText(value);
   }
 
   const wordSample = _.sample(wordList, 20);
@@ -18,12 +17,12 @@ const Home = () => {
   return(
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
         <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-          <textarea value={textboxes[0]} onChange={e => updateText(e.target.value, 0)}></textarea>
-          <button onClick={() => setText(["", "", "", ""])}>
+          <Input text={text} setText={setText} />
+          <button onClick={() => setText("")}>
             Clear Text 
           </button>
           <p>
-            The current state is: {textboxes}
+            The current state is: {textbox}
           </p>
         </div>
         <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
