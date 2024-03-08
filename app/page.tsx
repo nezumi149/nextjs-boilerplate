@@ -22,20 +22,20 @@ const Home = () => {
             <Leaf words={wordSample.slice(0,4)} />
           </div>
           <div>
-            <Input text={textB} setText={setTextB} />
+            <Input text={textB} setText={setTextB} disabled={disabled}/>
             <Leaf words={wordSample.slice(4,8)} />
           </div>
           <div>
-            <Input text={textC} setText={setTextC} />
+            <Input text={textC} setText={setTextC} disabled={disabled} />
             <Leaf words={wordSample.slice(8,12)} />
           </div>
           <div>
-            <Input text={textD} setText={setTextD} />
+            <Input text={textD} setText={setTextD} disabled={disabled} />
             <Leaf words={wordSample.slice(12,16)} /> 
           </div>
         </div>
         <button onClick={() => setDisabled(!disabled)}>
-          {disabled ? "Submit" : "Unlock"}
+          {disabled ? "Unlock" : "Submit"}
         </button>
     </main>
   )
