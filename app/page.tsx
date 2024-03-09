@@ -35,8 +35,14 @@ const Home = () => {
             </div>
           </div>
         </div>
+        <button onClick={() => setRotation((rotation + 1) % 4)}>
+          Rotate Counterclockwise
+        </button>
         <button onClick={() => setDisabled(!disabled)}>
           {disabled ? "Unlock" : "Submit"}
+        </button>
+        <button onClick={() => setRotation((rotation + 3) % 4)}>
+          Rotate Clockwise
         </button>
         <p>
           {textA}<br />{textB}<br />{textC}<br />{textD}<br />
