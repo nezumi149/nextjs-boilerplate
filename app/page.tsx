@@ -17,24 +17,32 @@ const Home = () => {
   const textsRotation = [textA,textB,textC,textD];
   const setterRotation = [setTextA,setTextB,setTextC,setTextD]
 
+
+  // when rotate button is pressed:
+  // text rotates
+  // leaf location rotates
+  // leaf also rotates
+
+
   return(
-    <main className="flex min-h-screen flex-col items-center justify-between p-24"><div id='fourLeafOuter' style={{ fontSize: 20, fontFamily: 'aga-arabesque', color: 'gray'}}>
+    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+      <div id='fourLeafOuter' style={{ fontSize: 20, fontFamily: 'aga-arabesque', color: 'gray', height: '440px', width: '440px'}}>
         <Input text={textsRotation[rotation]} setText={setterRotation[rotation]} disabled={disabled}/>
-          <div id='fourLeafInner'style={{ height:'360px', width:'360px', position:'relative'}}>
-            <div style={{height:'179px', width:'179px', position: 'absolute', top:0, left: 0}}>
-              <Leaf words={wordSample.slice(0,4)}  disabled={disabled}/>
-            </div>
-            <div style={{height:'179px', width:'179px', position: 'absolute', top:0, right: 0}}>
-              <Leaf words={wordSample.slice(4,8)}  disabled={disabled}/>
-            </div>
-            <div style={{height:'179px', width:'179px', position: 'absolute', bottom:0, right: 0}}>
-              <Leaf words={wordSample.slice(8,12)} disabled={disabled}/>
-            </div>
-            <div style={{height:'179px', width:'179px', position: 'absolute', bottom:0, left: 0}}>
-              <Leaf words={wordSample.slice(12,16)} disabled={disabled}/>
-            </div>
+        <div id='fourLeafInner'style={{ height:'360px', width:'360px', position:'relative'}}>
+          <div style={{height:'179px', width:'179px', position: 'absolute', top:0, left: 0}}>
+            <Leaf words={wordSample.slice(0,4)}  disabled={disabled}/>
+          </div>
+          <div style={{height:'179px', width:'179px', position: 'absolute', top:0, right: 0}}>
+            <Leaf words={wordSample.slice(4,8)}  disabled={disabled}/>
+          </div>
+          <div style={{height:'179px', width:'179px', position: 'absolute', bottom:0, right: 0}}>
+            <Leaf words={wordSample.slice(8,12)} disabled={disabled}/>
+          </div>
+          <div style={{height:'179px', width:'179px', position: 'absolute', bottom:0, left: 0}}>
+            <Leaf words={wordSample.slice(12,16)} disabled={disabled}/>
           </div>
         </div>
+      </div>
         <button onClick={() => setRotation((rotation + 1) % 4)}>
           Rotate Counterclockwise
         </button>
