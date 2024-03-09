@@ -23,7 +23,7 @@ const Home = () => {
     width: '360px',
     position: 'relative',
     left: '40px', // could be margin: auto?
-    rotate: (90*rotation).toString().concat('px') // rotates entire clover
+    rotate: (90*rotation+1).toString().concat('px') // rotates entire clover
   }
 
   return(
