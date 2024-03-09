@@ -17,18 +17,19 @@ const Home = () => {
   const textsRotation = [textA,textB,textC,textD];
   const setterRotation = [setTextA,setTextB,setTextC,setTextD]
 
-
-  // when rotate button is pressed:
-  // text rotates
-  // leaf location rotates
-  // leaf also rotates
-
+  const fourLeafInnerStyle = {
+    height: '360px',
+    width: '360px',
+    position: 'relative',
+    left: '40px', // could be margin: auto?
+    rotate: (90*rotation).toString().concat('px'); // rotates entire clover
+  }
 
   return(
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div id='fourLeafOuter' style={{ fontSize: 20, fontFamily: 'aga-arabesque', color: 'gray', height: '440px', width: '440px'}}>
         <Input text={textsRotation[rotation]} setText={setterRotation[rotation]} disabled={disabled}/>
-        <div id='fourLeafInner'style={{ height:'360px', width:'360px', position:'relative', left: '40px'}}>
+        <div id='fourLeafInner'style={fourLeafInnerStyle}>
           <div style={{height:'179px', width:'179px', position: 'absolute', top:0, left: 0}}>
             <Leaf words={wordSample.slice(0,4)}  disabled={disabled}/>
           </div>
