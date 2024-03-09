@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from 'react';
+import { useState }from 'react';
+import React from 'react';
 import wordList from '@/resources/wordlist.json';
 import Input from "./Input";
 import Leaf from "./Leaf";
@@ -17,7 +18,7 @@ const Home = () => {
   const textsRotation = [textA,textB,textC,textD];
   const setterRotation = [setTextA,setTextB,setTextC,setTextD]
 
-  const fourLeafInnerStyle = {
+  const fourLeafInnerStyle: React.CSSProperties = {
     height: '360px',
     width: '360px',
     position: 'relative',
