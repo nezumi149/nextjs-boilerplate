@@ -8,6 +8,7 @@ import Leaf from "./Leaf";
 import * as _ from 'underscore';
 import cw from '@/resources/clockwise.png';
 import ccw from '@/resources/counterclockwise.png';
+import Image from 'next/image';
 const wordSample = _.sample(wordList, 20);
 
 const Home = () => {
@@ -81,13 +82,13 @@ const Home = () => {
           </div>
         </div>
         <button style={{top:'0px', left:'0px', position: 'absolute'}}>
-          <img src={cw} alt="clockwise" onClick={() => setRotation((rotation + 1) % 4)} />
+          <Image src={cw} onClick={() => setRotation((rotation + 1) % 4)} />
         </button>
         <button onClick={() => setDisabled(!disabled)} style={{bottom: '-20px', margin: 'auto', position: 'absolute'}}>
           {disabled ? "Unlock" : "Submit"}
         </button>
         <button style={{top:'0px', right:'0px', position: 'absolute'}}>
-          <img src={ccw} alt="counterclockwise" onClick={() => setRotation((rotation + 3) % 4)} />
+          <Image src={ccw} onClick={() => setRotation((rotation + 3) % 4)} />
         </button>
       </div>
     </main>
