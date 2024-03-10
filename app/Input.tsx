@@ -1,6 +1,6 @@
 import React from 'react';
 
-const inputStyle={
+const inputStyle: React.CSSProperties={
   textAlign: 'center'
 }
 
@@ -14,7 +14,7 @@ const divStyle: React.CSSProperties = {
 }
 
 const Input = (props: any) => {
-    const handleChange = (e: any) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       props.setText(e.target.value);
     };
   
