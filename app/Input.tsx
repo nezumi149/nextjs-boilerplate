@@ -14,7 +14,7 @@ const divStyle: React.CSSProperties = {
 }
 
 const Input = (props: any) => {
-    const handleChange = (e) => {
+    const handleChange = (e: any) => {
       props.setText(e.target.value);
     };
   
