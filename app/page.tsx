@@ -27,31 +27,28 @@ const Home = () => {
   }
 
   const rightInputStyle: React.CSSProperties = {
-    rotate: '90deg',
     top: '50%',
-    transform: 'translateY(-301px) translateX(-65px)',
+    transform: 'translateY(-50%) translateX(50%) rotate(90deg) translateY(-50%)',
     position: 'absolute'
   }
 
   const bottomInputStyle: React.CSSProperties = {
     rotate: '180deg',
-    bottom : '0px',
-    transform: 'translateY(178px) translateX(-98px)',
+    bottom : '12px',
+    left: '25%',
     position: 'absolute'
   }
 
   const leftInputStyle: React.CSSProperties = {
-    rotate: '270deg',
     left : '0px',
     top: '50%',
-    transform: 'translateY(31px) translateX(63px)',
+    transform: 'translateY(-50%) translateX(-50%0) rotate(270deg) translateY(50%)',
     position: 'absolute'
   }
 
   const greyInputStyle: React.CSSProperties = {
     width: '249px',
     margin: 'auto',
-    paddingBottom: '10px',
   }
 
   const borderStyle:  React.CSSProperties = {
@@ -61,7 +58,7 @@ const Home = () => {
 
   return(
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div id='fourLeafOuter' style={{ fontSize: 20, fontFamily: 'aga-arabesque', color: 'gray', height: '440px', width: '440px'}}>
+      <div id='fourLeafOuter' style={{ fontSize: 20, fontFamily: 'aga-arabesque', color: 'gray', height: '440px', width: '440px', position: 'absolute'}}>
         <Input text={textsRotation[rotation]} setText={setterRotation[rotation]} disabled={disabled} styling={{...greyInputStyle}}/>
         <Input text={textsRotation[(rotation + 3) % 4]} setText={setterRotation[rotation]} disabled='true'  styling={{...rightInputStyle, ...greyInputStyle, ...borderStyle}}/>
         <Input text={textsRotation[(rotation + 2) % 4]} setText={setterRotation[rotation]} disabled='true' styling={{...bottomInputStyle, ...greyInputStyle, ...borderStyle}}/>
