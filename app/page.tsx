@@ -44,7 +44,7 @@ const Home = () => {
     rotate: '270deg',
     left : '0px',
     top: '50%',
-    transform: 'translateY(-110px) translateX(20px)',
+    transform: 'translateY(31px) translateX(63px)',
     position: 'absolute'
   }
 
