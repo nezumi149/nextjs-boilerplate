@@ -6,6 +6,8 @@ import wordList from '@/resources/wordlist.json';
 import Input from "./Input";
 import Leaf from "./Leaf";
 import * as _ from 'underscore';
+import cw from '@/resources/clockwise.png';
+import ccw from '@/resources/counterclockwise.png';
 const wordSample = _.sample(wordList, 20);
 
 const Home = () => {
@@ -78,14 +80,14 @@ const Home = () => {
             <Leaf words={wordSample.slice(12,16)} disabled={disabled}/>
           </div>
         </div>
-        <button style={{top:'0px', left:'0px'}}>
-          <img src="../resources/clockwise.png" alt="clockwise" onClick={() => setRotation((rotation + 1) % 4)} />
+        <button style={{top:'0px', left:'0px', position: 'absolute'}}>
+          <img src={cw} alt="clockwise" onClick={() => setRotation((rotation + 1) % 4)} />
         </button>
-        <button onClick={() => setDisabled(!disabled)} style={{bottom: '-10px', margin: 'auto'}}>
+        <button onClick={() => setDisabled(!disabled)} style={{bottom: '-20px', margin: 'auto', position: 'absolute'}}>
           {disabled ? "Unlock" : "Submit"}
         </button>
-        <button style={{top:'0px', right:'0px'}}>
-          <img src="../resources/counterclockwise.png" alt="counterclockwise" onClick={() => setRotation((rotation + 3) % 4)} />
+        <button style={{top:'0px', right:'0px', position: 'absolute'}}>
+          <img src={ccw} alt="counterclockwise" onClick={() => setRotation((rotation + 3) % 4)} />
         </button>
       </div>
     </main>
