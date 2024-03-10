@@ -1,5 +1,16 @@
+import React from 'react';
+
 const inputStyle={
   textAlign: 'center'
+}
+
+const divStyle: React.CSSProperties = {
+  border: '#AAAAAA 2px solid',
+  borderRadius: '15px',
+  width: '249px',
+  margin: 'auto',
+  paddingBottom: '10px',
+  position: 'absolute'
 }
 
 const Input = (props) => {
