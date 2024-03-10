@@ -19,7 +19,7 @@ const Input = (props: any) => {
     };
   
     return (
-      <div style={props.styling}>
+      <div style={divStyle}>
         <input style={inputStyle} value={props.text} onChange={handleChange} disabled={props.disabled}/>
       </div>
     );
