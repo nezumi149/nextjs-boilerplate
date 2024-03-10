@@ -13,7 +13,7 @@ const divStyle: React.CSSProperties = {
   position: 'absolute'
 }
 
-const Input = (props) => {
+const Input = (props: any) => {
     const handleChange = (e) => {
       props.setText(e.target.value);
     };
