@@ -57,7 +57,7 @@ const Home = () => {
   return(
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div id='fourLeafOuter' style={{ fontSize: 20, fontFamily: 'aga-arabesque', color: 'gray', height: '440px', width: '440px'}}>
-        <Input text={textsRotation[rotation]} setText={setterRotation[rotation]} disabled={disabled} style={{greyInputStyle}}/>
+        <Input text={textsRotation[rotation]} setText={setterRotation[rotation]} disabled={disabled} styling={{greyInputStyle}}/>
         <Input text={textsRotation[(rotation + 3) % 4]} setText={setterRotation[rotation]} disabled='true' styling={{rightInputStyle, greyInputStyle}}/>
         <Input text={textsRotation[(rotation + 2) % 4]} setText={setterRotation[rotation]} disabled='true' styling={{bottomInputStyle, greyInputStyle}}/>
         <Input text={textsRotation[(rotation + 1) % 4]} setText={setterRotation[rotation]} disabled='true' styling={{leftInputStyle, greyInputStyle}}/>
