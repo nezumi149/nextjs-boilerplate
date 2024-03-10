@@ -8,7 +8,7 @@ const Input = (props) => {
     };
   
     return (
-      <div style={props.style}>
+      <div style={props.styling}>
         <input style={inputStyle} value={props.text} onChange={handleChange} disabled={props.disabled}/>
       </div>
     );
