@@ -1,7 +1,7 @@
 "use client";
 import { useState } from 'react';
 
-const Leaf = (props) => {
+const Leaf = (props: any) => {
     const [rotation, setRotation] = useState(0);
   
     return (
