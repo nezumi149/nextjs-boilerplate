@@ -28,8 +28,9 @@ const Home = () => {
 
   const rightInputStyle: React.CSSProperties = {
     top: '50%',
-    transform: 'translateY(-50%) translateX(50%) rotate(90deg) translateY(-50%)',
-    position: 'absolute'
+    transform: 'translateY(-50%) translateX(50%) rotate(90deg) translateY(50%)',
+    position: 'absolute',
+    right: '0px'
   }
 
   const bottomInputStyle: React.CSSProperties = {
@@ -42,7 +43,7 @@ const Home = () => {
   const leftInputStyle: React.CSSProperties = {
     left : '0px',
     top: '50%',
-    transform: 'translateY(-50%) translateX(-50%0) rotate(270deg) translateY(50%)',
+    transform: 'translateY(-50%) translateX(-50%) rotate(270deg) translateY(50%)',
     position: 'absolute'
   }
 
