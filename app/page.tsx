@@ -29,20 +29,23 @@ const Home = () => {
   const rightInputStyle: React.CSSProperties = {
     rotate: '90deg',
     top: '50%',
-    transform: 'translateY(-301px) translateX(-17px)'
+    transform: 'translateY(-301px) translateX(-65px)',
+    position: 'absolute'
   }
 
   const bottomInputStyle: React.CSSProperties = {
     rotate: '180deg',
     bottom : '0px',
-    transform: 'translateY(-7px) translateX(-98px)'
+    transform: 'translateY(-7px) translateX(-98px)',
+    position: 'absolute'
   }
 
   const leftInputStyle: React.CSSProperties = {
     rotate: '270deg',
     left : '0px',
     top: '50%',
-    transform: 'translateY(-110px) translateX(20px)'
+    transform: 'translateY(-110px) translateX(20px)',
+    position: 'absolute'
   }
 
   const greyInputStyle: React.CSSProperties = {
@@ -51,7 +54,6 @@ const Home = () => {
     width: '249px',
     margin: 'auto',
     paddingBottom: '10px',
-    position: 'absolute'
   }
 
   return(
@@ -85,9 +87,6 @@ const Home = () => {
         <button onClick={() => setRotation((rotation + 3) % 4)}>
           Rotate Counterclockwise
         </button>
-        <p>
-          {textA}<br />{textB}<br />{textC}<br />{textD}<br />
-        </p>
     </main>
   )
 }
