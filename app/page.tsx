@@ -79,13 +79,13 @@ const Home = () => {
           </div>
         </div>
         <button style={{top:'0px', left:'0px'}}>
-          <img src="/resources/clockwise.png" alt="clockwise" onClick={() => setRotation((rotation + 1) % 4)} />
+          <img src="../resources/clockwise.png" alt="clockwise" onClick={() => setRotation((rotation + 1) % 4)} />
         </button>
         <button onClick={() => setDisabled(!disabled)} style={{bottom: '-10px', margin: 'auto'}}>
           {disabled ? "Unlock" : "Submit"}
         </button>
         <button style={{top:'0px', right:'0px'}}>
-          <img src="/resources/counterclockwise.png" alt="counterclockwise" onClick={() => setRotation((rotation + 3) % 4)} />
+          <img src="../resources/counterclockwise.png" alt="counterclockwise" onClick={() => setRotation((rotation + 3) % 4)} />
         </button>
       </div>
     </main>
