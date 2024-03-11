@@ -61,8 +61,8 @@ const Home = () => {
   }
 
   return(
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div id='fourLeafOuter' style={{ fontSize: 20, fontFamily: 'aga-arabesque', color: 'gray', height: '440px', width: '440px', position: 'absolute'}}>
+    <main className="flex min-h-screen flex-col items-center justify-between p-24" style={{ fontSize: 20, fontFamily: 'aga-arabesque', color: 'gray'}}>
+      <div id='fourLeafOuter' style={{ height: '440px', width: '440px', position: 'absolute' }}>
         <Input text={textsRotation[rotation]} setText={setterRotation[rotation]} disabled={disabled} styling={{...greyInputStyle}}/>
         <Input text={textsRotation[(rotation + 3) % 4]} setText={setterRotation[rotation]} disabled='true'  styling={{...rightInputStyle, ...greyInputStyle, ...borderStyle}}/>
         <Input text={textsRotation[(rotation + 2) % 4]} setText={setterRotation[rotation]} disabled='true' styling={{...bottomInputStyle, ...greyInputStyle, ...borderStyle}}/>
@@ -90,6 +90,11 @@ const Home = () => {
         <button style={{top:'0px', right:'0px', width:'30px', position: 'absolute'}}>
           <Image width={30} height = {30} alt="clockwise" src={cw} onClick={() => setRotation((rotation + 1) % 4)} />
         </button>
+      </div>
+      <div id='lowerLeafPanel' style={{height: '168px', width: '840px', position: 'absolute', opacity: '0.6', backgroundColor: '#DDDDDD'}}>
+        <p>
+          This is the lower div
+        </p>
       </div>
     </main>
   )
