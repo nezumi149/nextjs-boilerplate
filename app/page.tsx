@@ -16,6 +16,7 @@ const Home = () => {
   const [textB, setTextB] = useState("");
   const [textC, setTextC] = useState("");
   const [textD, setTextD] = useState("");
+  const nums = [0,1,2,3,4];
   const [rotation, setRotation] = useState(0); //rotation should be between 0 and 3 inclusive
   const [disabled, setDisabled] = useState(false);
   const textsRotation = [textA,textB,textC,textD];
@@ -91,12 +92,8 @@ const Home = () => {
           <Image width={30} height = {30} alt="clockwise" src={cw} onClick={() => setRotation((rotation + 1) % 4)} />
         </button>
       </div>
-      <div id='lowerLeafPanel' style={{height: '168px', width: '840px', position: 'absolute', opacity: '0.6', backgroundColor: '#DDDDDD', bottom:'0px'}}>
-        <Leaf words={wordSample.slice(0,4)}  disabled={disabled}/>
-        <Leaf words={wordSample.slice(4,8)}  disabled={disabled}/>
-        <Leaf words={wordSample.slice(8,12)}  disabled={disabled}/>
-        <Leaf words={wordSample.slice(12,16)}  disabled={disabled}/>
-        <Leaf words={wordSample.slice(16,20)}  disabled={disabled}/>
+      <div id='lowerLeafPanel' style={{height: '179px', width: '895px', position: 'absolute', opacity: '0.6', backgroundColor: '#DDDDDD', bottom:'0px'}}>
+        {nums.map(leafNum => <div><Leaf words={wordSample.slice({leafNum*4},{leafNum*4+4})}  disabled={disabled}/></div>)}
       </div>
     </main>
   )
