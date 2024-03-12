@@ -91,10 +91,12 @@ const Home = () => {
           <Image width={30} height = {30} alt="clockwise" src={cw} onClick={() => setRotation((rotation + 1) % 4)} />
         </button>
       </div>
-      <div id='lowerLeafPanel' style={{height: '168px', width: '840px', position: 'absolute', opacity: '0.6', backgroundColor: '#DDDDDD'}}>
-        <p>
-          This is the lower div
-        </p>
+      <div id='lowerLeafPanel' style={{height: '168px', width: '840px', position: 'absolute', opacity: '0.6', backgroundColor: '#DDDDDD', bottom:'0px'}}>
+        <Leaf words={wordSample.slice(0,4)}  disabled={disabled}/>
+        <Leaf words={wordSample.slice(4,8)}  disabled={disabled}/>
+        <Leaf words={wordSample.slice(8,12)}  disabled={disabled}/>
+        <Leaf words={wordSample.slice(12,16)}  disabled={disabled}/>
+        <Leaf words={wordSample.slice(16,20)}  disabled={disabled}/>
       </div>
     </main>
   )
