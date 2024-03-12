@@ -22,9 +22,19 @@ const Home = () => {
   const textsRotation = [textA,textB,textC,textD];
   const setterRotation = [setTextA,setTextB,setTextC,setTextD]
 
+  const lowerLeafStyle: React.CSSProperties = (index:number) => ({
+    top: '0px',
+    left: (index*179).toString().concat('px'),
+    position: 'absolute'
+  });
+
+  const lowerLeaf = (index:number) => (
+    <Leaf words={wordSample.slice(index*4,index*4+4)}  disabled={disabled}/>
+  );
+
   const leafList = nums.map((item, index) => (
-    <div key={index}>{item}</div>
-  ));
+    <div key={index} style={lowerLeafStyle(index)}>{lowerLeaf(index)}</div>
+  ));:
 
   const fourLeafInnerStyle: React.CSSProperties = {
     height: '360px',
