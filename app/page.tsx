@@ -93,7 +93,7 @@ const Home = () => {
         </button>
       </div>
       <div id='lowerLeafPanel' style={{height: '179px', width: '895px', position: 'absolute', opacity: '0.6', backgroundColor: '#DDDDDD', bottom:'0px'}}>
-        {nums.map(leafNum => <div><Leaf words={wordSample.slice({leafNum*4},{leafNum*4+4})}  disabled={disabled}/></div>)}
+        {nums.map(leafNum => <div style={{height:'179px', width:'179px', top: "0px", position:"absolute": left:(leafNum*179).toString().concat('px')}}></div>)}
       </div>
     </main>
   )
