@@ -22,11 +22,11 @@ const Home = () => {
   const textsRotation = [textA,textB,textC,textD];
   const setterRotation = [setTextA,setTextB,setTextC,setTextD]
 
-  const lowerLeafStyle: React.CSSProperties = (index:number) => ({
+  const lowerLeafStyle = (index:number):React.CSSProperties => ({
     top: '0px',
     left: (index*179).toString().concat('px'),
     position: 'absolute'
-  });
+  };
 
   const lowerLeaf = (index:number) => (
     <Leaf words={wordSample.slice(index*4,index*4+4)}  disabled={disabled}/>
