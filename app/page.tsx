@@ -34,7 +34,7 @@ const Home = () => {
 
   const leafList = nums.map((item, index) => (
     <div key={index} style={lowerLeafStyle(index)}>{lowerLeaf(index)}</div>
-  ));:
+  ));
 
   const fourLeafInnerStyle: React.CSSProperties = {
     height: '360px',
