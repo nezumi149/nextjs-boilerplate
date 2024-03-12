@@ -2,13 +2,18 @@
 
 import { useState }from 'react';
 import React from 'react';
-import wordList from '@/resources/wordlist.json';
-import Input from "./Input";
-import Leaf from "./Leaf";
 import * as _ from 'underscore';
+import {DndContext, DragOverlay} from '@dnd-kit/core';
+
+import wordList from '@/resources/wordlist.json';
 import cw from '@/resources/clockwise.png';
 import ccw from '@/resources/counterclockwise.png';
 import Image from 'next/image';
+
+import Input from "./Input";
+import Leaf from "./Leaf";
+import Draggable from "./Draggable";
+
 const wordSample = _.sample(wordList, 20);
 
 const Home = () => {
@@ -16,6 +21,7 @@ const Home = () => {
   const [textB, setTextB] = useState("");
   const [textC, setTextC] = useState("");
   const [textD, setTextD] = useState("");
+  const [activeId, setActiveId] = useState<string | null>(null);
   const nums = [0,1,2,3,4];
   const [rotation, setRotation] = useState(0); //rotation should be between 0 and 3 inclusive
   const [disabled, setDisabled] = useState(false);
@@ -29,7 +35,9 @@ const Home = () => {
   });
 
   const lowerLeaf = (index:number) => (
-    <Leaf words={wordSample.slice(index*4,index*4+4)}  disabled={disabled}/>
+    <Draggable id = {index}>
+      <Leaf words={wordSample.slice(index*4,index*4+4)}  disabled={disabled}/>
+    </Draggable>
   );
 
   const leafList = nums.map((item, index) => (
@@ -107,7 +115,12 @@ const Home = () => {
         </button>
       </div>
       <div id='lowerLeafPanel' style={{height: '179px', width: '895px', position: 'absolute', opacity: '0.6', backgroundColor: '#DDDDDD', bottom:'0px'}}>
-        {leafList}
+        <DndContext onDragStart={(e:any) => setActiveId(e.active.id)} onDragEnd={(e:any) => setActiveId(null)}>
+          {leafList}
+        </DndContext>
+        <DragOverlay>
+          {activeId ? <Leaf id={activeId}/> : null}
+        </DragOverlay>
       </div>
     </main>
   )
