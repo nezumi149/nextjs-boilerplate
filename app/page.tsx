@@ -26,7 +26,7 @@ const Home = () => {
     top: '0px',
     left: (index*179).toString().concat('px'),
     position: 'absolute'
-  };
+  });
 
   const lowerLeaf = (index:number) => (
     <Leaf words={wordSample.slice(index*4,index*4+4)}  disabled={disabled}/>
