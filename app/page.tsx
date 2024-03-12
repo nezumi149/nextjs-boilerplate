@@ -22,6 +22,10 @@ const Home = () => {
   const textsRotation = [textA,textB,textC,textD];
   const setterRotation = [setTextA,setTextB,setTextC,setTextD]
 
+  const leafList = nums.map((item, index) => (
+    <div key={index}>{item}</div>
+  ));
+
   const fourLeafInnerStyle: React.CSSProperties = {
     height: '360px',
     width: '360px',
@@ -93,7 +97,7 @@ const Home = () => {
         </button>
       </div>
       <div id='lowerLeafPanel' style={{height: '179px', width: '895px', position: 'absolute', opacity: '0.6', backgroundColor: '#DDDDDD', bottom:'0px'}}>
-        {nums.map(leafNum => <div style={{height:'179px', width:'179px', top: "0px", position:"absolute": left:(leafNum*179).toString().concat('px')}}></div>)}
+        {leafList}
       </div>
     </main>
   )
