@@ -46,8 +46,8 @@ const Home = () => {
   });
 
   const lowerLeaf = (index:number) => (
-    <Draggable id = {index}>
-      <Leaf words={wordSample.slice(index*4,index*4+4)}  disabled={disabled}/>
+    <Draggable>
+      <Leaf id={index.toString()} words={wordSample.slice(index*4,index*4+4)}  disabled={disabled}/>
     </Draggable>
   );
 
@@ -130,13 +130,9 @@ const Home = () => {
           {leafList}
         </DndContext>
         <DragOverlay>
-          {activeId ? <Leaf id={activeId}/> : null}
+          {activeId ? <Draggable id={activeId}/> : null}
         </DragOverlay>
-        <p>The active ID is: {activeId ? activeId.toString(): null}</p>
       </div>
-      <p>
-        {activeId}
-      </p>
     </main>
   )
 }
