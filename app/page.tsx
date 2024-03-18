@@ -3,7 +3,7 @@
 import { useState }from 'react';
 import React from 'react';
 import * as _ from 'underscore';
-import {DndContext, DragOverlay} from '@dnd-kit/core';
+import {DndContext, DragOverlay, DragStartEvent, DragEndEvent} from '@dnd-kit/core';
 
 import wordList from '@/resources/wordlist.json';
 import cw from '@/resources/clockwise.png';
@@ -27,6 +27,14 @@ const Home = () => {
   const [disabled, setDisabled] = useState(false);
   const textsRotation = [textA,textB,textC,textD];
   const setterRotation = [setTextA,setTextB,setTextC,setTextD]
+
+  const handleDragStart = ({ active }: DragStartEvent) => {
+    setActiveId(active.id as string);
+  };
+
+  const handleDragEnd = ({ active, over }: DragEndEvent) => {
+    setActiveId(null);
+  };
 
   const lowerLeafStyle = (index:number):React.CSSProperties => ({
     top: '0px',
@@ -115,7 +123,7 @@ const Home = () => {
         </button>
       </div>
       <div id='lowerLeafPanel' style={{height: '179px', width: '895px', position: 'absolute', opacity: '0.6', backgroundColor: '#DDDDDD', bottom:'0px'}}>
-        <DndContext onDragStart={(e:any) => setActiveId(e.active.id)} onDragEnd={(e:any) => setActiveId(null)}>
+        <DndContext onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
           {leafList}
         </DndContext>
         <DragOverlay>
