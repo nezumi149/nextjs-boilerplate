@@ -121,6 +121,7 @@ const Home = () => {
         <DragOverlay>
           {activeId ? <Leaf id={activeId}/> : null}
         </DragOverlay>
+        <p>The active ID is: {activeId}</p>
       </div>
       <p>
         {activeId}
