@@ -29,6 +29,8 @@ const Home = () => {
   const setterRotation = [setTextA,setTextB,setTextC,setTextD]
 
   const handleDragStart = ({ active }: DragStartEvent) => {
+    const str = active.id as string;
+    console.log(str)
     setActiveId(active.id as string);
   };
 
