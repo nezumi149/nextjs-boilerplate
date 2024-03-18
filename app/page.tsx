@@ -46,8 +46,8 @@ const Home = () => {
   });
 
   const lowerLeaf = (index:number) => (
-    <Draggable>
-      <Leaf id={index.toString()} words={wordSample.slice(index*4,index*4+4)}  disabled={disabled}/>
+    <Draggable id={index.toString()}>
+      <Leaf words={wordSample.slice(index*4,index*4+4)}  disabled={disabled}/>
     </Draggable>
   );
 
