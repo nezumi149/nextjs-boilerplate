@@ -130,7 +130,7 @@ const Home = () => {
           {leafList}
         </DndContext>
         <DragOverlay>
-          {activeId ? <Draggable id={activeId}/> : null}
+          {activeId ? <Leaf id={activeId}/> : null}
         </DragOverlay>
       </div>
     </main>
