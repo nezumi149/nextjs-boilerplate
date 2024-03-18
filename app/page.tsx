@@ -35,6 +35,7 @@ const Home = () => {
   };
 
   const handleDragEnd = ({ active, over }: DragEndEvent) => {
+    console.log("drag end");
     setActiveId(null);
   };
 
@@ -131,7 +132,7 @@ const Home = () => {
         <DragOverlay>
           {activeId ? <Leaf id={activeId}/> : null}
         </DragOverlay>
-        <p>The active ID is: {activeId ? activeId: null}</p>
+        <p>The active ID is: {activeId ? activeId.toString(): null}</p>
       </div>
       <p>
         {activeId}
