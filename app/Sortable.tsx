@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
+import Leaf from './Leaf';
 
 
 const Sortable = (props:any) => {
@@ -20,9 +21,14 @@ const style = {
 };
   
   return (
-    <Element ref={setNodeRef} style={style} withOpacity={isDragging} {...listeners} {...attributes}>
-      {props.children}
-    </Element>
+    <Leaf
+            ref={setNodeRef}
+            style={style}
+            withOpacity={isDragging}
+            {...props}
+            {...attributes}
+            {...listeners}
+        />
   );
 }
 
