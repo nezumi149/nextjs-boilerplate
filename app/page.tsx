@@ -56,6 +56,8 @@ const Home = () => {
 
   const handleDragEnd = useCallback((event: DragEndEvent) => {
     const { active, over } = event;
+    console.log(active.id)
+    console.log(over.id)
 
     if (active.id !== over?.id) {
         setItems((items:any) => {
