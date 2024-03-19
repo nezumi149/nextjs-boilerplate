@@ -150,7 +150,7 @@ const Home = () => {
           </SortableContext>
         </DndContext>
         <DragOverlay adjustScale style={{ transformOrigin: '0 0 ' }}>
-          {activeId ? <Leaf id={activeId} isDragging /> : null}
+          {activeId ? <Leaf id={activeId} isDragging words/> : null}
         </DragOverlay>
       </div>
     </main>
