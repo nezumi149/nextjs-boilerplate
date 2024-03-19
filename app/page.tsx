@@ -60,9 +60,7 @@ const Home = () => {
   });
 
   const lowerLeaf = (index:number) => (
-    <Sortable key={index.toString()} id={index.toString()}>
-      <Leaf words={wordSample.slice(index*4,index*4+4)}  disabled={disabled}/>
-    </Sortable>
+    <Sortable key={index.toString()} id={index.toString()} words={wordSample.slice(index*4,index*4+4)}  disabled={disabled} />
   );
 
   const leafList = nums.map((item, index) => (
