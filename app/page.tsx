@@ -154,16 +154,16 @@ const Home = () => {
           <SortableContext items={items} strategy={rectSwappingStrategy} id="fourLeafSortableContext">
             <div style={{display: disabled?'inline':'none'}}>
               <div style={{height:'179px', width:'179px', position: 'absolute', top:0, left: 0}}>
-                <Sortable key={'5'} id={'5'} words={wordSample.slice(20,24)}  disabled={disabled} />
+                <Sortable key={items[5]} id={items[5]} words={wordSample.slice(20,24)}  disabled={disabled} />
               </div>
               <div style={{height:'179px', width:'179px', position: 'absolute', top:0, right: 0}}>
-                <Sortable key={'6'} id={'6'} words={wordSample.slice(24,28)}  disabled={disabled} />
+                <Sortable key={items[6]} id={items[6]} words={wordSample.slice(20,24)}  disabled={disabled} />
               </div>
               <div style={{height:'179px', width:'179px', position: 'absolute', bottom:0, right: 0}}>
-                <Sortable key={'7'} id={'7'} words={wordSample.slice(28,32)}  disabled={disabled} />
+                <Sortable key={items[7]} id={items[7]} words={wordSample.slice(20,24)}  disabled={disabled} />
               </div>
               <div style={{height:'179px', width:'179px', position: 'absolute', bottom:0, left: 0}}>
-                <Sortable key={'8'} id={'8'} words={wordSample.slice(32,36)}  disabled={disabled} />
+                <Sortable key={items[8]} id={items[8]} words={wordSample.slice(20,24)}  disabled={disabled} />
               </div>
             </div>
           </SortableContext>
