@@ -1,9 +1,20 @@
 "use client";
 
-import { useState }from 'react';
+import { useState, useCallback }from 'react';
 import React from 'react';
 import * as _ from 'underscore';
-import {DndContext, DragOverlay, DragStartEvent, DragEndEvent} from '@dnd-kit/core';
+import {
+  DndContext,
+  closestCenter,
+  DragOverlay,
+  DragStartEvent,
+  DragEndEvent,
+  MouseSensor,
+  TouchSensor,
+  useSensor,
+  useSensors,
+} from '@dnd-kit/core';
+import { arrayMove, SortableContext, rectSwappingStrategy } from '@dnd-kit/sortable';
 
 import wordList from '@/resources/wordlist.json';
 import cw from '@/resources/clockwise.png';
@@ -12,7 +23,7 @@ import Image from 'next/image';
 
 import Input from "./Input";
 import Leaf from "./Leaf";
-import Draggable from "./Draggable";
+import Sortable from "./Sortable";
 
 const wordSample = _.sample(wordList, 20);
 
@@ -27,12 +38,15 @@ const Home = () => {
   const [disabled, setDisabled] = useState(false);
   const textsRotation = [textA,textB,textC,textD];
   const setterRotation = [setTextA,setTextB,setTextC,setTextD]
+  const sensors = useSensors(useSensor(MouseSensor), useSensor(TouchSensor));
 
-  const handleDragStart = ({ active }: DragStartEvent) => {
-    const str = active.id as string;
-    console.log(str)
-    setActiveId(active.id as string);
-  };
+  const handleDragStart = useCallback((event: DragStartEvent) => {
+    setActiveId(event.active.id);
+  }, []);
+
+  const handleDragCancel = useCallback(() => {
+    setActiveId(null);
+  }, []);
 
   const handleDragEnd = ({ active, over }: DragEndEvent) => {
     console.log("drag end");
@@ -46,13 +60,13 @@ const Home = () => {
   });
 
   const lowerLeaf = (index:number) => (
-    <Draggable id={index.toString()}>
+    <Sortable key={index.toString()} id={index.toString()}>
       <Leaf words={wordSample.slice(index*4,index*4+4)}  disabled={disabled}/>
-    </Draggable>
+    </Sortable>
   );
 
   const leafList = nums.map((item, index) => (
-    <div key={index} style={lowerLeafStyle(index)}>{lowerLeaf(index)}</div>
+    <div style={lowerLeafStyle(index)}>{lowerLeaf(index)}</div>
   ));
 
   const fourLeafInnerStyle: React.CSSProperties = {
@@ -126,11 +140,19 @@ const Home = () => {
         </button>
       </div>
       <div id='lowerLeafPanel' style={{height: '179px', width: '895px', position: 'absolute', opacity: '0.6', backgroundColor: '#DDDDDD', bottom:'0px'}}>
-        <DndContext onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
-          {leafList}
+        <DndContext
+          onDragStart={handleDragStart}
+          onDragEnd={handleDragEnd}
+          sensors={sensors}
+          collisionDetection={closestCenter}
+          onDragCancel={handleDragCancel}
+        >
+          <SortableContext items={nums} strategy={rectSwappingStrategy}>
+            {leafList}
+          </SortableContext>
         </DndContext>
-        <DragOverlay>
-          {activeId ? <Leaf id={activeId}/> : null}
+        <DragOverlay adjustScale style={{ transformOrigin: '0 0 ' }}>
+          {activeId ? <Leaf id={activeId} isDragging /> : null}
         </DragOverlay>
       </div>
     </main>

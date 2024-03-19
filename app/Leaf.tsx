@@ -1,7 +1,42 @@
 "use client";
 import { useState } from 'react';
+import React, { forwardRef, HTMLAttributes, CSSProperties } from 'react';
 
-const Leaf = (props: any) => {
+export type LeafProps = HTMLAttributes<HTMLDivElement> & {
+    id: string;
+    withOpacity?: boolean;
+    isDragging?: boolean;
+    disabled?: boolean;
+    words: string[];
+};
+
+const Leaf = forwardRef<HTMLDivElement, LeafProps>(({ id, withOpacity, isDragging, style, ...props }, ref) => {
+    const [rotation, setRotation] = useState(0);
+    const inlineStyles: CSSProperties = {
+        opacity: withOpacity ? '0.5' : '1',
+        transformOrigin: '50% 50%',
+        height: '167px',
+        width: '167px',
+        borderRadius: '15px',
+        cursor: isDragging ? 'grabbing' : 'grab',
+        backgroundColor: '#DDFFDD',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        boxShadow: isDragging  ? 'rgb(63 63 68 / 5%) 0px 2px 0px 2px, rgb(34 33 81 / 15%) 0px 2px 3px 2px' : 'rgb(63 63 68 / 5%) 0px 0px 0px 1px, rgb(34 33 81 / 15%) 0px 1px 3px 0px',
+        transform: isDragging ? 'scale(1.05)' : 'scale(1)',
+        margin: '6px',
+        position: 'relative',
+        border: 'solid',
+        ...style,
+    };
+
+    return <div ref={ref} style={inlineStyles} {...props} onClick={() => setRotation(rotation + (props.disabled?1:0))}>{id}</div>;
+});
+
+export default Leaf;
+
+/*const Leaf = (props: any) => {
     const [rotation, setRotation] = useState(0);
   
     return (
@@ -24,4 +59,4 @@ const Leaf = (props: any) => {
     );
   };
 
-export default Leaf;
+export default Leaf; */
