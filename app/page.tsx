@@ -124,6 +124,13 @@ const Home = () => {
 
   return(
     <main className="flex min-h-screen flex-col items-center justify-between p-24" style={{ fontSize: 20, fontFamily: 'aga-arabesque', color: 'gray'}}>
+      <DndContext
+          onDragStart={handleDragStart}
+          onDragEnd={handleDragEnd}
+          sensors={sensors}
+          collisionDetection={closestCenter}
+          onDragCancel={handleDragCancel}
+        >
       <div id='fourLeafOuter' style={{ height: '440px', width: '440px', position: 'absolute' }}>
         <Input text={textsRotation[rotation]} setText={setterRotation[rotation]} disabled={disabled} styling={{...greyInputStyle}}/>
         <Input text={textsRotation[(rotation + 3) % 4]} setText={setterRotation[rotation]} disabled='true'  styling={{...rightInputStyle, ...greyInputStyle, ...borderStyle}}/>
@@ -156,23 +163,16 @@ const Home = () => {
         </button>
       </div>
       <div id='lowerLeafPanel' style={{height: '179px', width: '895px', position: 'absolute', opacity: '0.6', backgroundColor: '#DDDDDD', bottom:'0px'}}>
-        <DndContext
-          onDragStart={handleDragStart}
-          onDragEnd={handleDragEnd}
-          sensors={sensors}
-          collisionDetection={closestCenter}
-          onDragCancel={handleDragCancel}
-        >
-          <SortableContext items={items} strategy={rectSwappingStrategy}>
+          <SortableContext items={items} strategy={rectSwappingStrategy} id="lowerPanelSortableContext">
             <div style={{display: disabled?'inline':'none'}}>
               {leafList}
             </div>
           </SortableContext>
-        </DndContext>
+      </div>
+      </DndContext>
         <DragOverlay adjustScale style={{ transformOrigin: '0 0 ' }}>
           {activeId ? <Leaf id={activeId} isDragging words={wordSample.slice(parseInt(activeId)*4,parseInt(activeId)*4+4)}/> : null}
         </DragOverlay>
-      </div>
     </main>
   )
 }
