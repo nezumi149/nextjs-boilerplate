@@ -69,12 +69,12 @@ const Home = () => {
     position: 'absolute'
   });
 
-  const lowerLeaf = (index:number) => (
-    <Sortable key={index.toString()} id={index.toString()} words={wordSample.slice(index*4,index*4+4)}  disabled={disabled} />
+  const lowerLeaf = (item:string, index:number) => (
+    <Sortable key={item} id={item} words={wordSample.slice(index*4,index*4+4)}  disabled={disabled} />
   );
 
-  const leafList = items.map((index:number) => (
-    <div key={index} style={lowerLeafStyle(index)}>{lowerLeaf(index)}</div>
+  const leafList = items.map((item:string, index:number) => (
+    <div key={item} style={lowerLeafStyle(index)}>{lowerLeaf(item, index)}</div>
   ));
 
   const fourLeafInnerStyle: React.CSSProperties = {
