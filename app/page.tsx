@@ -41,7 +41,7 @@ const Home = () => {
   const sensors = useSensors(useSensor(MouseSensor), useSensor(TouchSensor));
 
   const handleDragStart = useCallback((event: DragStartEvent) => {
-    setActiveId(event.active.id);
+    setActiveId(event.active.id.toString());
   }, []);
 
   const handleDragCancel = useCallback(() => {
