@@ -33,7 +33,7 @@ const Home = () => {
   const [textC, setTextC] = useState("");
   const [textD, setTextD] = useState("");
   const [activeId, setActiveId] = useState<string | null>(null);
-  const nums = [0,1,2,3,4];
+  const [items, setItems] = useState(Array.from({ length: 5 }, (_, i) => (i + 1).toString()));
   const [rotation, setRotation] = useState(0); //rotation should be between 0 and 3 inclusive
   const [disabled, setDisabled] = useState(false);
   const textsRotation = [textA,textB,textC,textD];
@@ -48,10 +48,20 @@ const Home = () => {
     setActiveId(null);
   }, []);
 
-  const handleDragEnd = ({ active, over }: DragEndEvent) => {
-    console.log("drag end");
+  const handleDragEnd = useCallback((event: DragEndEvent) => {
+    const { active, over } = event;
+
+    if (active.id !== over?.id) {
+        setItems((items:any) => {
+            const oldIndex = items.indexOf(active.id);
+            const newIndex = items.indexOf(over!.id);
+
+            return arrayMove(items, oldIndex, newIndex);
+        });
+    }
+
     setActiveId(null);
-  };
+  }, []);
 
   const lowerLeafStyle = (index:number):React.CSSProperties => ({
     top: '0px',
@@ -63,7 +73,7 @@ const Home = () => {
     <Sortable key={index.toString()} id={index.toString()} words={wordSample.slice(index*4,index*4+4)}  disabled={disabled} />
   );
 
-  const leafList = nums.map((item, index) => (
+  const leafList = items.map((index:number) => (
     <div key={index} style={lowerLeafStyle(index)}>{lowerLeaf(index)}</div>
   ));
 
@@ -145,7 +155,7 @@ const Home = () => {
           collisionDetection={closestCenter}
           onDragCancel={handleDragCancel}
         >
-          <SortableContext items={nums} strategy={rectSwappingStrategy}>
+          <SortableContext items={items} strategy={rectSwappingStrategy}>
             {leafList}
           </SortableContext>
         </DndContext>
