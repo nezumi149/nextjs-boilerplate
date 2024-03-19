@@ -12,6 +12,7 @@ import {
   MouseSensor,
   TouchSensor,
   useSensor,
+  PointerSensor,
   useSensors,
 } from '@dnd-kit/core';
 import { arrayMove, SortableContext, rectSwappingStrategy } from '@dnd-kit/sortable';
@@ -33,12 +34,17 @@ const Home = () => {
   const [textC, setTextC] = useState("");
   const [textD, setTextD] = useState("");
   const [activeId, setActiveId] = useState<string | null>(null);
-  const [items, setItems] = useState(Array.from({ length: 5 }, (_, i) => (i + 1).toString()));
+  const [items, setItems] = useState(Array.from({ length: 5 }, (_, i) => (i).toString()));
   const [rotation, setRotation] = useState(0); //rotation should be between 0 and 3 inclusive
   const [disabled, setDisabled] = useState(false);
   const textsRotation = [textA,textB,textC,textD];
   const setterRotation = [setTextA,setTextB,setTextC,setTextD]
-  const sensors = useSensors(useSensor(MouseSensor), useSensor(TouchSensor));
+  const pointerSensor = useSensor(PointerSensor, {
+    activationConstraint: {
+      distance: 0.01
+    }
+  })
+  const sensors = useSensors(pointerSensor, useSensor(MouseSensor), useSensor(TouchSensor));
 
   const handleDragStart = useCallback((event: DragStartEvent) => {
     setActiveId(event.active.id.toString());
