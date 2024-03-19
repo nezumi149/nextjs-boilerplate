@@ -83,7 +83,7 @@ const Home = () => {
     <div key={item} style={lowerLeafStyle(index)}>{lowerLeaf(item)}</div>
   ));
 
-  const innerLeafs =  () => {
+  const innerLeafs = () => {
     return(
     <div style={{height:'179px', width:'179px', position: 'absolute', top:0, left: 0}}>
       <Leaf id ={wordSample[0]} words={wordSample.slice(0,4)}  disabled={disabled}/>
@@ -97,7 +97,8 @@ const Home = () => {
     <div style={{height:'179px', width:'179px', position: 'absolute', bottom:0, left: 0}}>
       <Leaf id ={wordSample[12]} words={wordSample.slice(12,16)} disabled={disabled}/>
     </div>
-  )};
+    );
+  };
 
   const fourLeafInnerStyle: React.CSSProperties = {
     height: '360px',
