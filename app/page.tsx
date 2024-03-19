@@ -142,16 +142,16 @@ const Home = () => {
         <Input text={textsRotation[(rotation + 1) % 4]} setText={setterRotation[rotation]} disabled='true' styling={{...leftInputStyle, ...greyInputStyle, ...borderStyle}}/>
         <div id='fourLeafInner' style={fourLeafInnerStyle}>
           <SortableContext items={items} strategy={rectSwappingStrategy} id="fourLeafSortableContext">
-            <div style={{height:'179px', width:'179px', position: 'absolute', top:0, left: 0}}>
+            <div key={items[5]} style={{height:'179px', width:'179px', position: 'absolute', top:0, left: 0}}>
               {disabled?leaf(items[5]):upperLeaf(0)}
             </div>
-            <div style={{height:'179px', width:'179px', position: 'absolute', top:0, right: 0}}>
+            <div key={items[6]} style={{height:'179px', width:'179px', position: 'absolute', top:0, right: 0}}>
               {disabled?leaf(items[6]):upperLeaf(1)}
             </div>
-            <div style={{height:'179px', width:'179px', position: 'absolute', bottom:0, right: 0}}>
+            <div key={items[7]} style={{height:'179px', width:'179px', position: 'absolute', bottom:0, right: 0}}>
               {disabled?leaf(items[7]):upperLeaf(2)}
             </div>
-            <div style={{height:'179px', width:'179px', position: 'absolute', bottom:0, left: 0}}>
+            <div key={items[8]} style={{height:'179px', width:'179px', position: 'absolute', bottom:0, left: 0}}>
               {disabled?leaf(items[8]):upperLeaf(3)}
             </div>
             </SortableContext>
