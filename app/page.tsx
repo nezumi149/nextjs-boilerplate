@@ -26,7 +26,7 @@ import Input from "./Input";
 import Leaf from "./Leaf";
 import Sortable from "./Sortable";
 
-const wordSample = _.sample(wordList, 20);
+const wordSample = _.sample(wordList, 20).concat(Array(16).fill(""));
 
 const Home = () => {
   const [textA, setTextA] = useState("");
@@ -34,7 +34,7 @@ const Home = () => {
   const [textC, setTextC] = useState("");
   const [textD, setTextD] = useState("");
   const [activeId, setActiveId] = useState<string | null>(null);
-  const [items, setItems] = useState(Array.from({ length: 5 }, (_, i) => (i).toString()));
+  const [items, setItems] = useState(Array.from({ length: 9 }, (_, i) => (i).toString()));
   const [rotation, setRotation] = useState(0); //rotation should be between 0 and 3 inclusive
   const [disabled, setDisabled] = useState(false);
   const textsRotation = [textA,textB,textC,textD];
@@ -79,7 +79,7 @@ const Home = () => {
     <Sortable key={item} id={item} words={wordSample.slice(parseInt(item)*4,parseInt(item)*4+4)}  disabled={disabled} />
   );
 
-  const leafList = items.map((item:string, index:number) => (
+  const leafList = items.slice(0,5).map((item:string, index:number) => (
     <div key={item} style={lowerLeafStyle(index)}>{lowerLeaf(item)}</div>
   ));
 
@@ -151,6 +151,22 @@ const Home = () => {
               <Leaf id ={wordSample[12]} words={wordSample.slice(12,16)} disabled={disabled}/>
             </div>
           </div>
+          <SortableContext items={items} strategy={rectSwappingStrategy} id="fourLeafSortableContext">
+            <div style={{display: disabled?'inline':'none'}}>
+              <div style={{height:'179px', width:'179px', position: 'absolute', top:0, left: 0}}>
+                <Sortable key={'5'} id={'5'} words={wordSample.slice(20,24)}  disabled={disabled} />
+              </div>
+              <div style={{height:'179px', width:'179px', position: 'absolute', top:0, right: 0}}>
+                <Sortable key={'6'} id={'6'} words={wordSample.slice(24,28)}  disabled={disabled} />
+              </div>
+              <div style={{height:'179px', width:'179px', position: 'absolute', bottom:0, right: 0}}>
+                <Sortable key={'7'} id={'7'} words={wordSample.slice(28,32)}  disabled={disabled} />
+              </div>
+              <div style={{height:'179px', width:'179px', position: 'absolute', bottom:0, left: 0}}>
+                <Sortable key={'8'} id={'8'} words={wordSample.slice(32,36)}  disabled={disabled} />
+              </div>
+            </div>
+          </SortableContext>
         </div>
         <button style={{top:'0px', left:'0px', width:'30px', position: 'absolute'}}>
           <Image width={30} height = {30} alt="counterclockwise" src={ccw} onClick={() => setRotation((rotation + 3) % 4)} />
