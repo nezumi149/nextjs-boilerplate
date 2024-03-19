@@ -141,36 +141,20 @@ const Home = () => {
         <Input text={textsRotation[(rotation + 2) % 4]} setText={setterRotation[rotation]} disabled='true' styling={{...bottomInputStyle, ...greyInputStyle, ...borderStyle}}/>
         <Input text={textsRotation[(rotation + 1) % 4]} setText={setterRotation[rotation]} disabled='true' styling={{...leftInputStyle, ...greyInputStyle, ...borderStyle}}/>
         <div id='fourLeafInner' style={fourLeafInnerStyle}>
-          <div style={{display: disabled?'none':'inline'}}>
+          <SortableContext items={items} strategy={rectSwappingStrategy} id="fourLeafSortableContext">
             <div style={{height:'179px', width:'179px', position: 'absolute', top:0, left: 0}}>
-              {upperLeaf(0)}
+              {disabled?leaf(items[5]):upperLeaf(0)}
             </div>
             <div style={{height:'179px', width:'179px', position: 'absolute', top:0, right: 0}}>
-              {upperLeaf(1)}
+              {disabled?leaf(items[6]):upperLeaf(1)}
             </div>
             <div style={{height:'179px', width:'179px', position: 'absolute', bottom:0, right: 0}}>
-              {upperLeaf(2)}
+              {disabled?leaf(items[7]):upperLeaf(2)}
             </div>
             <div style={{height:'179px', width:'179px', position: 'absolute', bottom:0, left: 0}}>
-              {upperLeaf(3)}
+              {disabled?leaf(items[8]):upperLeaf(3)}
             </div>
-          </div>
-          <SortableContext items={items} strategy={rectSwappingStrategy} id="fourLeafSortableContext">
-            <div style={{display: disabled?'inline':'none'}}>
-              <div style={{height:'179px', width:'179px', position: 'absolute', top:0, left: 0}}>
-                {leaf(items[5])}
-              </div>
-              <div style={{height:'179px', width:'179px', position: 'absolute', top:0, right: 0}}>
-                {leaf(items[6])}
-              </div>
-              <div style={{height:'179px', width:'179px', position: 'absolute', bottom:0, right: 0}}>
-                {leaf(items[7])}
-              </div>
-              <div style={{height:'179px', width:'179px', position: 'absolute', bottom:0, left: 0}}>
-                {leaf(items[8])}
-              </div>
-            </div>
-          </SortableContext>
+            </SortableContext>
         </div>
         <button style={{top:'0px', left:'0px', width:'30px', position: 'absolute'}}>
           <Image width={30} height = {30} alt="counterclockwise" src={ccw} onClick={() => setRotation((rotation + 3) % 4)} />
