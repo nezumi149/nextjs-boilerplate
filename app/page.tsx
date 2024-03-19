@@ -164,7 +164,9 @@ const Home = () => {
           onDragCancel={handleDragCancel}
         >
           <SortableContext items={items} strategy={rectSwappingStrategy}>
-            {leafList}
+            <div style={{display: disabled?'inline':'none'}}>
+              {leafList}
+            </div>
           </SortableContext>
         </DndContext>
         <DragOverlay adjustScale style={{ transformOrigin: '0 0 ' }}>
