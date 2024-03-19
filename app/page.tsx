@@ -130,7 +130,7 @@ const Home = () => {
         <Input text={textsRotation[(rotation + 2) % 4]} setText={setterRotation[rotation]} disabled='true' styling={{...bottomInputStyle, ...greyInputStyle, ...borderStyle}}/>
         <Input text={textsRotation[(rotation + 1) % 4]} setText={setterRotation[rotation]} disabled='true' styling={{...leftInputStyle, ...greyInputStyle, ...borderStyle}}/>
         <div id='fourLeafInner' style={fourLeafInnerStyle}>
-          <div style={disabled?'none':'inline'}>
+          <div style={{display: disabled?'none':'inline'}}>
             <div style={{height:'179px', width:'179px', position: 'absolute', top:0, left: 0}}>
               <Leaf id ={wordSample[0]} words={wordSample.slice(0,4)}  disabled={disabled}/>
             </div>
