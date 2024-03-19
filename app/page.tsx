@@ -75,12 +75,16 @@ const Home = () => {
     position: 'absolute'
   });
 
-  const lowerLeaf = (item:string) => (
+  const leaf = (item:string) => (
     <Sortable key={item} id={item} words={wordSample.slice(parseInt(item)*4,parseInt(item)*4+4)}  disabled={disabled} />
   );
 
+  const upperLeaf = (index:number) => (
+    <Leaf id ={wordSample[index*4]} words={wordSample.slice(index*4,index*4+4)}  disabled={disabled}/>
+  )
+
   const leafList = items.slice(0,5).map((item:string, index:number) => (
-    <div key={item} style={lowerLeafStyle(index)}>{lowerLeaf(item)}</div>
+    <div key={item} style={lowerLeafStyle(index)}>{leaf(item)}</div>
   ));
 
   const fourLeafInnerStyle: React.CSSProperties = {
@@ -139,31 +143,31 @@ const Home = () => {
         <div id='fourLeafInner' style={fourLeafInnerStyle}>
           <div style={{display: disabled?'none':'inline'}}>
             <div style={{height:'179px', width:'179px', position: 'absolute', top:0, left: 0}}>
-              <Leaf id ={wordSample[0]} words={wordSample.slice(0,4)}  disabled={disabled}/>
+              {upperLeaf(0)}
             </div>
             <div style={{height:'179px', width:'179px', position: 'absolute', top:0, right: 0}}>
-              <Leaf id ={wordSample[4]} words={wordSample.slice(4,8)}  disabled={disabled}/>
+              {upperLeaf(1)}
             </div>
             <div style={{height:'179px', width:'179px', position: 'absolute', bottom:0, right: 0}}>
-              <Leaf id ={wordSample[8]} words={wordSample.slice(8,12)} disabled={disabled}/>
+              {upperLeaf(2)}
             </div>
             <div style={{height:'179px', width:'179px', position: 'absolute', bottom:0, left: 0}}>
-              <Leaf id ={wordSample[12]} words={wordSample.slice(12,16)} disabled={disabled}/>
+              {upperLeaf(3)}
             </div>
           </div>
           <SortableContext items={items} strategy={rectSwappingStrategy} id="fourLeafSortableContext">
             <div style={{display: disabled?'inline':'none'}}>
               <div style={{height:'179px', width:'179px', position: 'absolute', top:0, left: 0}}>
-                <Sortable key={items[5]} id={items[5]} words={wordSample.slice(20,24)}  disabled={disabled} />
+                {leaf(items[5])}
               </div>
               <div style={{height:'179px', width:'179px', position: 'absolute', top:0, right: 0}}>
-                <Sortable key={items[6]} id={items[6]} words={wordSample.slice(20,24)}  disabled={disabled} />
+                {leaf(items[6])}
               </div>
               <div style={{height:'179px', width:'179px', position: 'absolute', bottom:0, right: 0}}>
-                <Sortable key={items[7]} id={items[7]} words={wordSample.slice(20,24)}  disabled={disabled} />
+                {leaf(items[7])}
               </div>
               <div style={{height:'179px', width:'179px', position: 'absolute', bottom:0, left: 0}}>
-                <Sortable key={items[8]} id={items[8]} words={wordSample.slice(20,24)}  disabled={disabled} />
+                {leaf(items[8])}
               </div>
             </div>
           </SortableContext>
