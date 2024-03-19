@@ -150,7 +150,7 @@ const Home = () => {
           </SortableContext>
         </DndContext>
         <DragOverlay adjustScale style={{ transformOrigin: '0 0 ' }}>
-          {activeId ? <Leaf id={activeId} isDragging words={wordSample.slice(activeId.parseInt()*4,activeId.parseInt()*4+4)}/> : null}
+          {activeId ? <Leaf id={activeId} isDragging words={wordSample.slice(parseInt(activeId)*4,parseInt(activeId)*4+4)}/> : null}
         </DragOverlay>
       </div>
     </main>
