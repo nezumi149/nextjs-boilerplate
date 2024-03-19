@@ -83,6 +83,21 @@ const Home = () => {
     <div key={item} style={lowerLeafStyle(index)}>{lowerLeaf(item)}</div>
   ));
 
+  const innerLeafs = (
+    <div style={{height:'179px', width:'179px', position: 'absolute', top:0, left: 0}}>
+      <Leaf id ={wordSample[0]} words={wordSample.slice(0,4)}  disabled={disabled}/>
+    </div>
+    <div style={{height:'179px', width:'179px', position: 'absolute', top:0, right: 0}}>
+      <Leaf id ={wordSample[4]} words={wordSample.slice(4,8)}  disabled={disabled}/>
+    </div>
+    <div style={{height:'179px', width:'179px', position: 'absolute', bottom:0, right: 0}}>
+      <Leaf id ={wordSample[8]} words={wordSample.slice(8,12)} disabled={disabled}/>
+    </div>
+    <div style={{height:'179px', width:'179px', position: 'absolute', bottom:0, left: 0}}>
+      <Leaf id ={wordSample[12]} words={wordSample.slice(12,16)} disabled={disabled}/>
+    </div>
+  );
+
   const fourLeafInnerStyle: React.CSSProperties = {
     height: '360px',
     width: '360px',
@@ -130,18 +145,7 @@ const Home = () => {
         <Input text={textsRotation[(rotation + 2) % 4]} setText={setterRotation[rotation]} disabled='true' styling={{...bottomInputStyle, ...greyInputStyle, ...borderStyle}}/>
         <Input text={textsRotation[(rotation + 1) % 4]} setText={setterRotation[rotation]} disabled='true' styling={{...leftInputStyle, ...greyInputStyle, ...borderStyle}}/>
         <div id='fourLeafInner' style={fourLeafInnerStyle}>
-          <div style={{height:'179px', width:'179px', position: 'absolute', top:0, left: 0}}>
-            <Leaf id ={wordSample[0]} words={wordSample.slice(0,4)}  disabled={disabled}/>
-          </div>
-          <div style={{height:'179px', width:'179px', position: 'absolute', top:0, right: 0}}>
-            <Leaf id ={wordSample[4]} words={wordSample.slice(4,8)}  disabled={disabled}/>
-          </div>
-          <div style={{height:'179px', width:'179px', position: 'absolute', bottom:0, right: 0}}>
-            <Leaf id ={wordSample[8]} words={wordSample.slice(8,12)} disabled={disabled}/>
-          </div>
-          <div style={{height:'179px', width:'179px', position: 'absolute', bottom:0, left: 0}}>
-            <Leaf id ={wordSample[12]} words={wordSample.slice(12,16)} disabled={disabled}/>
-          </div>
+          {disabled? null: innerLeafs}
         </div>
         <button style={{top:'0px', left:'0px', width:'30px', position: 'absolute'}}>
           <Image width={30} height = {30} alt="counterclockwise" src={ccw} onClick={() => setRotation((rotation + 3) % 4)} />
