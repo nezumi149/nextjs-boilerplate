@@ -94,9 +94,9 @@ const Home = () => {
     <Leaf id ={wordSample[index*4]} words={wordSample.slice(index*4,index*4+4)}  disabled={disabled} rotationParameter={0} />
   )
 
-  const getRandomInt = (max:number):number {
-    return Math.floor(Math.random() * max);
-  }
+  const getRandomInt = (max:number):number => (
+    Math.floor(Math.random() * max)
+  )
 
   const leafList = items.slice(0,5).map((item:string, index:number) => (
     <div key={item} style={lowerLeafStyle(index)}>{leaf(item, getRandomInt(4))}</div>
