@@ -87,11 +87,11 @@ const Home = () => {
   });
 
   const leaf = (item:string, r:number) => (
-    <Sortable key={item} id={item} words={wordSample.slice(parseInt(item)*4,parseInt(item)*4+4)}  disabled={disabled} rotationParameter={r}/>
+    <Sortable key={item} id={item} words={wordSample.slice(parseInt(item)*4,parseInt(item)*4+4)}  disabled={disabled} rotationParam={r}/>
   );
 
   const upperLeaf = (index:number) => (
-    <Leaf id ={wordSample[index*4]} words={wordSample.slice(index*4,index*4+4)}  disabled={disabled} rotationParameter={0} />
+    <Leaf id ={wordSample[index*4]} words={wordSample.slice(index*4,index*4+4)}  disabled={disabled} rotationParam={0} />
   )
 
   const getRandomInt = (max:number):number => (
