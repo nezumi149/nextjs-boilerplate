@@ -8,6 +8,8 @@ export type LeafProps = HTMLAttributes<HTMLDivElement> & {
     isDragging?: boolean;
     disabled?: boolean;
     words: string[];
+    setLeafRotation: any;
+    leafRotation: any;
 };
 
 /* eslint-disable react/display-name */
