@@ -56,15 +56,13 @@ const Home = () => {
 
   const handleDragEnd = useCallback((event: DragEndEvent) => {
     const { active, over } = event;
-    console.log("before: ");
-    console.log(items);
 
     if (active.id !== over?.id) {
         setItems((items:string[]) => {
             const oldIndex = items.indexOf(active.id);
             const newIndex = items.indexOf(over!.id);
+            console.log(items.toString().concat(oldIndex.toString()).concat(newIndex.toString()))
             const newArray = arrayMove(items, oldIndex, newIndex);
-            console.log("after: ".concat(newArray.toString()));
             return newArray;
         });
     }
