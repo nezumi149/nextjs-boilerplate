@@ -60,7 +60,7 @@ const Home = () => {
     console.log(items);
 
     if (active.id !== over?.id) {
-        setItems((items:any) => {
+        setItems((items:string[]) => {
             const oldIndex = items.indexOf(active.id);
             const newIndex = items.indexOf(over!.id);
             const newArray = arrayMove(items, oldIndex, newIndex);
@@ -68,7 +68,7 @@ const Home = () => {
             return newArray;
         });
     }
-    
+
     setActiveId(null);
   }, []);
 
