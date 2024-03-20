@@ -66,8 +66,8 @@ const Home = () => {
 
     if (active.id !== over?.id) {
         setItems((items:string[]):string[] => {
-            const oldIndex = items.indexOf(active.id);
-            const newIndex = items.indexOf(over!.id);
+            const oldIndex = items.findIndex((item) => item === active.id);
+            const newIndex = items.findIndex((item) => item  === over!.id);
             const newArray = Array.from(items);
             const temp = items[oldIndex];
             newArray[oldIndex] = items[newIndex];
