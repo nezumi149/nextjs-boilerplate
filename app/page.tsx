@@ -63,13 +63,12 @@ const Home = () => {
         setItems((items:any) => {
             const oldIndex = items.indexOf(active.id);
             const newIndex = items.indexOf(over!.id);
-
-            return arrayMove(items, oldIndex, newIndex);
+            const newArray = arrayMove(items, oldIndex, newIndex);
+            console.log("after: ".concat(newArray.toString()));
+            return newArray;
         });
     }
-    console.log("after: ");
-    console.log(items);
-
+    
     setActiveId(null);
   }, []);
 
