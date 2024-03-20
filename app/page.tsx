@@ -69,9 +69,6 @@ const Home = () => {
         });
     }
 
-    console.log("after set: ");
-    console.log(items);
-
     setActiveId(null);
   }, []);
 
