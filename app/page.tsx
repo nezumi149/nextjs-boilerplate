@@ -27,6 +27,12 @@ import Leaf from "./Leaf";
 import Sortable from "./Sortable";
 
 const wordSample = _.sample(wordList, 20).concat(Array(16).fill(""));
+const shuffle = (arr:string[]):string[] => (
+  arr
+  .map(value => ({ value, sort: Math.random() }))
+  .sort((a, b) => a.sort - b.sort)
+  .map(({ value }) => value)
+);
 
 const Home = () => {
   const [textA, setTextA] = useState("");
@@ -34,7 +40,8 @@ const Home = () => {
   const [textC, setTextC] = useState("");
   const [textD, setTextD] = useState("");
   const [activeId, setActiveId] = useState<string | null>(null);
-  const [items, setItems] = useState(Array.from({ length: 9 }, (_, i) => (i).toString()));
+  const numberStringArray = Array.from({ length: 9 }, (_, i) => (i).toString());
+  const [items, setItems] = useState(shuffle(numberStringArray.slice(0,5)).concat(numberStringArray.slice(5)));
   const [rotation, setRotation] = useState(0); //rotation should be between 0 and 3 inclusive
   const [disabled, setDisabled] = useState(false);
   const textsRotation = [textA,textB,textC,textD];
