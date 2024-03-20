@@ -8,11 +8,12 @@ export type LeafProps = HTMLAttributes<HTMLDivElement> & {
     isDragging?: boolean;
     disabled?: boolean;
     words: string[];
+    rotationParam: number;
 };
 
 /* eslint-disable react/display-name */
 const Leaf = forwardRef<HTMLDivElement, LeafProps>(({ id, withOpacity, isDragging, style, ...props }, ref) => {
-    const [rotation, setRotation] = useState(0);
+    const [rotation, setRotation] = useState(props.rotationParam%4);
     const inlineStyles: CSSProperties = {
         opacity: withOpacity ? '0.5' : '1',
         transformOrigin: '50% 50%',

@@ -86,16 +86,20 @@ const Home = () => {
     position: 'absolute'
   });
 
-  const leaf = (item:string) => (
-    <Sortable key={item} id={item} words={wordSample.slice(parseInt(item)*4,parseInt(item)*4+4)}  disabled={disabled} />
+  const leaf = (item:string, r:number) => (
+    <Sortable key={item} id={item} words={wordSample.slice(parseInt(item)*4,parseInt(item)*4+4)}  disabled={disabled} rotationParameter={r}/>
   );
 
   const upperLeaf = (index:number) => (
-    <Leaf id ={wordSample[index*4]} words={wordSample.slice(index*4,index*4+4)}  disabled={disabled}/>
+    <Leaf id ={wordSample[index*4]} words={wordSample.slice(index*4,index*4+4)}  disabled={disabled} rotationParameter={0} />
   )
 
+  const getRandomInt = (max:number):number {
+    return Math.floor(Math.random() * max);
+  }
+
   const leafList = items.slice(0,5).map((item:string, index:number) => (
-    <div key={item} style={lowerLeafStyle(index)}>{leaf(item)}</div>
+    <div key={item} style={lowerLeafStyle(index)}>{leaf(item, getRandomInt(4))}</div>
   ));
 
   const fourLeafInnerStyle: React.CSSProperties = {
@@ -154,16 +158,16 @@ const Home = () => {
         <div id='fourLeafInner' style={fourLeafInnerStyle}>
           <SortableContext items={items} strategy={rectSwappingStrategy} id="fourLeafSortableContext">
             <div key={items[5]} style={{height:'179px', width:'179px', position: 'absolute', top:0, left: 0}}>
-              {disabled?leaf(items[5]):upperLeaf(0)}
+              {disabled?leaf(items[5],0):upperLeaf(0)}
             </div>
             <div key={items[6]} style={{height:'179px', width:'179px', position: 'absolute', top:0, right: 0}}>
-              {disabled?leaf(items[6]):upperLeaf(1)}
+              {disabled?leaf(items[6],0):upperLeaf(1)}
             </div>
             <div key={items[7]} style={{height:'179px', width:'179px', position: 'absolute', bottom:0, right: 0}}>
-              {disabled?leaf(items[7]):upperLeaf(2)}
+              {disabled?leaf(items[7],0):upperLeaf(2)}
             </div>
             <div key={items[8]} style={{height:'179px', width:'179px', position: 'absolute', bottom:0, left: 0}}>
-              {disabled?leaf(items[8]):upperLeaf(3)}
+              {disabled?leaf(items[8],0):upperLeaf(3)}
             </div>
             </SortableContext>
         </div>
