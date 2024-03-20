@@ -61,8 +61,11 @@ const Home = () => {
         setItems((items:string[]) => {
             const oldIndex = items.indexOf(active.id);
             const newIndex = items.indexOf(over!.id);
-            console.log(items.toString().concat(oldIndex.toString()).concat(newIndex.toString()))
-            const newArray = arrayMove(items, oldIndex, newIndex);
+            const newArray = Array.from(items);
+            const temp = items[oldIndex];
+            newArray[oldIndex] = items[newIndex];
+            newArray[newIndex] = temp;
+
             return newArray;
         });
     }
