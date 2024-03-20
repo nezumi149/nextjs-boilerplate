@@ -34,18 +34,33 @@ const shuffle = (arr:string[]):string[] => (
   .map(({ value }) => value)
 );
 
+const getRandomInt = (max:number):number => (
+  Math.floor(Math.random() * max)
+)
+
+
 const Home = () => {
   const [textA, setTextA] = useState("");
   const [textB, setTextB] = useState("");
   const [textC, setTextC] = useState("");
   const [textD, setTextD] = useState("");
+  const textsRotation = [textA,textB,textC,textD];
+  const setterRotation = [setTextA,setTextB,setTextC,setTextD];
+  const [rotationA, setRotationA] = useState(getRandomInt(4));
+  const [rotationB, setRotationB] = useState(getRandomInt(4));
+  const [rotationC, setRotationC] = useState(getRandomInt(4));
+  const [rotationD, setRotationD] = useState(getRandomInt(4));
+  const [rotationE, setRotationE] = useState(0);
+  const [rotationF, setRotationF] = useState(0);
+  const [dummy, setDummy] = useState(0);
+  const leafRotation = [rotationA, rotationB, rotationC, rotationD, rotationE, rotationF, rotationF, rotationF, rotationF];
+  const leafSetterRotation = [setRotationA, setRotationB, setRotationC, setRotationD, setRotationE, setRotationF, rotationF, rotationF, rotationF];
+
   const [activeId, setActiveId] = useState<string | null>(null);
   const numberStringArray = Array.from({ length: 9 }, (_, i) => (i).toString());
   const [items, setItems] = useState(shuffle(numberStringArray.slice(0,5)).concat(numberStringArray.slice(5)));
   const [rotation, setRotation] = useState(0); //rotation should be between 0 and 3 inclusive
   const [disabled, setDisabled] = useState(false);
-  const textsRotation = [textA,textB,textC,textD];
-  const setterRotation = [setTextA,setTextB,setTextC,setTextD]
   const pointerSensor = useSensor(PointerSensor, {
     activationConstraint: {
       distance: 0.01
@@ -86,20 +101,28 @@ const Home = () => {
     position: 'absolute'
   });
 
-  const leaf = (item:string, r:number) => (
-    <Sortable key={item} id={item} words={wordSample.slice(parseInt(item)*4,parseInt(item)*4+4)}  disabled={disabled} rotationParam={r}/>
+  const leaf = (item:string) => (
+    <Sortable
+      key={item}
+      id={item}
+      words={wordSample.slice(parseInt(item)*4,parseInt(item)*4+4)} 
+      disabled={disabled}
+      leafRotation={leafRotation[parseInt(item)]}
+      setLeafRotation={leafSetterRotation[parseInt(item)]}
+      />
   );
 
   const upperLeaf = (index:number) => (
-    <Leaf id ={wordSample[index*4]} words={wordSample.slice(index*4,index*4+4)}  disabled={disabled} rotationParam={0} />
-  )
-
-  const getRandomInt = (max:number):number => (
-    Math.floor(Math.random() * max)
+    <Leaf
+     id ={wordSample[index*4]}
+     words={wordSample.slice(index*4,index*4+4)} 
+     disabled={disabled}
+     leafRotation={dummy}
+     setLeafRotation={setDummy}/>
   )
 
   const leafList = items.slice(0,5).map((item:string, index:number) => (
-    <div key={item} style={lowerLeafStyle(index)}>{leaf(item, getRandomInt(4))}</div>
+    <div key={item} style={lowerLeafStyle(index)}>{leaf(item)}</div>
   ));
 
   const fourLeafInnerStyle: React.CSSProperties = {
@@ -158,16 +181,16 @@ const Home = () => {
         <div id='fourLeafInner' style={fourLeafInnerStyle}>
           <SortableContext items={items} strategy={rectSwappingStrategy} id="fourLeafSortableContext">
             <div key={items[5]} style={{height:'179px', width:'179px', position: 'absolute', top:0, left: 0}}>
-              {disabled?leaf(items[5],0):upperLeaf(0)}
+              {disabled?leaf(items[5]):upperLeaf(0)}
             </div>
             <div key={items[6]} style={{height:'179px', width:'179px', position: 'absolute', top:0, right: 0}}>
-              {disabled?leaf(items[6],0):upperLeaf(1)}
+              {disabled?leaf(items[6]):upperLeaf(1)}
             </div>
             <div key={items[7]} style={{height:'179px', width:'179px', position: 'absolute', bottom:0, right: 0}}>
-              {disabled?leaf(items[7],0):upperLeaf(2)}
+              {disabled?leaf(items[7]):upperLeaf(2)}
             </div>
             <div key={items[8]} style={{height:'179px', width:'179px', position: 'absolute', bottom:0, left: 0}}>
-              {disabled?leaf(items[8],0):upperLeaf(3)}
+              {disabled?leaf(items[8]):upperLeaf(3)}
             </div>
             </SortableContext>
         </div>
@@ -190,7 +213,7 @@ const Home = () => {
       </div>
       </DndContext>
         <DragOverlay adjustScale style={{ transformOrigin: '0 0 ' }}>
-          {activeId ? <Leaf id={activeId} isDragging words={wordSample.slice(parseInt(activeId)*4,parseInt(activeId)*4+4)}/> : null}
+          {activeId ? <Leaf id={activeId} isDragging words={wordSample.slice(parseInt(activeId)*4,parseInt(activeId)*4+4)} leafRotation={leafRotation[parseInt(activeId)]} setLeafRotation={leafSetterRotation[parseInt(activeId)]} /> : null}
         </DragOverlay>
     </main>
   )
