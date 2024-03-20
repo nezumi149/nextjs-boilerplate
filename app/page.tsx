@@ -56,11 +56,8 @@ const Home = () => {
 
   const handleDragEnd = useCallback((event: DragEndEvent) => {
     const { active, over } = event;
-    console.log("active id: ");
-    console.log(active.id);
-    if(over){
-      console.log(over.id);
-    }
+    console.log("before: ");
+    console.log(items);
 
     if (active.id !== over?.id) {
         setItems((items:any) => {
@@ -70,6 +67,8 @@ const Home = () => {
             return arrayMove(items, oldIndex, newIndex);
         });
     }
+    console.log("after: ");
+    console.log(items);
 
     setActiveId(null);
   }, []);
