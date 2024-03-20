@@ -65,7 +65,7 @@ const Home = () => {
     const { active, over } = event;
 
     if (active.id !== over?.id) {
-        setItems((items:any) => {
+        setItems((items:string[]):string[] => {
             const oldIndex = items.indexOf(active.id);
             const newIndex = items.indexOf(over!.id);
             const newArray = Array.from(items);
