@@ -95,6 +95,14 @@ const Home = () => {
     setActiveId(null);
   }, []);
 
+  const handleRotate = (increment:number) => {
+    setRotation((rotation + increment) % 4);
+    [5,6,7,8].forEach((i) =>{
+      const a = parseInt(items[i]);
+      leafSetterRotation[a]((leafRotation[a]+4-increment)%4);
+    });
+  };
+
   const lowerLeafStyle = (index:number):React.CSSProperties => ({
     top: '0px',
     left: (index*179).toString().concat('px'),
@@ -130,7 +138,7 @@ const Home = () => {
     width: '360px',
     position: 'relative',
     left: '40px', // could be margin: auto?
-    rotate: (90*rotation).toString().concat('deg') // rotates entire clover
+    // rotate: (90*rotation).toString().concat('deg') rotates entire clover
   }
 
   const rightInputStyle: React.CSSProperties = {
@@ -180,28 +188,28 @@ const Home = () => {
         <Input text={textsRotation[(rotation + 1) % 4]} setText={setterRotation[rotation]} disabled='true' styling={{...leftInputStyle, ...greyInputStyle, ...borderStyle}}/>
         <div id='fourLeafInner' style={fourLeafInnerStyle}>
           <SortableContext items={items} strategy={rectSwappingStrategy} id="fourLeafSortableContext">
-            <div key={items[5]} style={{height:'179px', width:'179px', position: 'absolute', top:0, left: 0}}>
-              {disabled?leaf(items[5]):upperLeaf(0)}
+            <div key={items[5+rotation]} style={{height:'179px', width:'179px', position: 'absolute', top:0, left: 0}}>
+              {disabled?leaf(items[5+rotation]):upperLeaf(0)}
             </div>
-            <div key={items[6]} style={{height:'179px', width:'179px', position: 'absolute', top:0, right: 0}}>
-              {disabled?leaf(items[6]):upperLeaf(1)}
+            <div key={items[5+(rotation+1)%4]} style={{height:'179px', width:'179px', position: 'absolute', top:0, right: 0}}>
+              {disabled?leaf(items[5+(rotation+1)%4]):upperLeaf(1)}
             </div>
-            <div key={items[7]} style={{height:'179px', width:'179px', position: 'absolute', bottom:0, right: 0}}>
-              {disabled?leaf(items[7]):upperLeaf(2)}
+            <div key={items[5+(rotation+2)%4]} style={{height:'179px', width:'179px', position: 'absolute', bottom:0, right: 0}}>
+              {disabled?leaf(items[5+(rotation+2)%4]):upperLeaf(2)}
             </div>
-            <div key={items[8]} style={{height:'179px', width:'179px', position: 'absolute', bottom:0, left: 0}}>
-              {disabled?leaf(items[8]):upperLeaf(3)}
+            <div key={items[5+(rotation+3)%4]} style={{height:'179px', width:'179px', position: 'absolute', bottom:0, left: 0}}>
+              {disabled?leaf(items[5+(rotation+3)%4]):upperLeaf(3)}
             </div>
             </SortableContext>
         </div>
         <button style={{top:'0px', left:'0px', width:'30px', position: 'absolute'}}>
-          <Image width={30} height = {30} alt="counterclockwise" src={ccw} onClick={() => setRotation((rotation + 3) % 4)} />
+          <Image width={30} height = {30} alt="counterclockwise" src={ccw} onClick={handleRotate(3)} />
         </button>
         <button onClick={() => setDisabled(!disabled)} style={{bottom: '-20px', margin: 'auto', position: 'absolute'}}>
           {disabled ? "Unlock" : "Submit"}
         </button>
         <button style={{top:'0px', right:'0px', width:'30px', position: 'absolute'}}>
-          <Image width={30} height = {30} alt="clockwise" src={cw} onClick={() => setRotation((rotation + 1) % 4)} />
+          <Image width={30} height = {30} alt="clockwise" src={cw} onClick={handleRotate(1)} />
         </button>
       </div>
       <div id='lowerLeafPanel' style={{height: '179px', width: '895px', position: 'absolute', opacity: '0.6', backgroundColor: '#DDDDDD', bottom:'0px'}}>
