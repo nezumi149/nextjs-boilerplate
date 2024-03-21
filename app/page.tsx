@@ -53,8 +53,8 @@ const Home = () => {
   const [rotationE, setRotationE] = useState(0);
   const [rotationF, setRotationF] = useState(0);
   const [dummy, setDummy] = useState(0);
-  const leafRotation = [rotationA, rotationB, rotationC, rotationD, rotationE, rotationF, rotationF, rotationF, rotationF];
-  const leafSetterRotation = [setRotationA, setRotationB, setRotationC, setRotationD, setRotationE, setRotationF, rotationF, rotationF, rotationF];
+  const leafRotation:number[] = [rotationA, rotationB, rotationC, rotationD, rotationE, rotationF, rotationF, rotationF, rotationF];
+  const leafSetterRotation:React.Dispatch<React.SetStateAction<number>> = [setRotationA, setRotationB, setRotationC, setRotationD, setRotationE, setRotationF, rotationF, rotationF, rotationF];
 
   const [activeId, setActiveId] = useState<string | null>(null);
   const numberStringArray = Array.from({ length: 9 }, (_, i) => (i).toString());
@@ -99,8 +99,7 @@ const Home = () => {
     setRotation((rotation + increment) % 4);
     [5,6,7,8].forEach((i) =>{
       const a = parseInt(items[i]);
-      const setter = leafSetterRotation[a];
-      setter((leafRotation[a]+4-increment)%4);
+      leafSetterRotation[a]((leafRotation[a]+4-increment)%4);
     });
   };
 
