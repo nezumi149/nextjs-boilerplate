@@ -99,7 +99,8 @@ const Home = () => {
     setRotation((rotation + increment) % 4);
     [5,6,7,8].forEach((i) =>{
       const a = parseInt(items[i]);
-      leafSetterRotation[a]((leafRotation[a]+4-increment)%4);
+      const setter = leafSetterRotation[a];
+      setter((leafRotation[a]+4-increment)%4);
     });
   };
 
