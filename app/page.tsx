@@ -96,12 +96,12 @@ const Home = () => {
   }, []);
 
   const handleRotate = (increment:number) => {
-    setRotation((rotation + increment) % 4);
+    setRotation((rotation + 4 - increment) % 4);
     [5,6,7,8].forEach((i) =>{
       const a = parseInt(items[i]);
-      leafSetterRotation[a]((leafRotation[a]+increment)%4);
+      leafSetterRotation[a]((leafRotation[a] + 4 - increment)%4);
     });
-    setDummy((dummy+increment)%4);
+    setDummy((dummy+4-increment)%4);
   };
 
   const lowerLeafStyle = (index:number):React.CSSProperties => ({
@@ -190,16 +190,16 @@ const Home = () => {
         <div id='fourLeafInner' style={fourLeafInnerStyle}>
           <SortableContext items={items} strategy={rectSwappingStrategy} id="fourLeafSortableContext">
             <div key={items[5+rotation]} style={{height:'179px', width:'179px', position: 'absolute', top:0, left: 0}}>
-              {disabled?leaf(items[5+rotation]):upperLeaf(0+rotation)}
+              {disabled?leaf(items[5+rotation]):upperLeaf((4 -rotation)%4)}
             </div>
             <div key={items[5+(rotation+1)%4]} style={{height:'179px', width:'179px', position: 'absolute', top:0, right: 0}}>
-              {disabled?leaf(items[5+(rotation+1)%4]):upperLeaf((1+rotation)%4)}
+              {disabled?leaf(items[5+(rotation+1)%4]):upperLeaf((5-rotation)%4)}
             </div>
             <div key={items[5+(rotation+2)%4]} style={{height:'179px', width:'179px', position: 'absolute', bottom:0, right: 0}}>
-              {disabled?leaf(items[5+(rotation+2)%4]):upperLeaf((2+rotation)%4)}
+              {disabled?leaf(items[5+(rotation+2)%4]):upperLeaf((6-rotation)%4)}
             </div>
             <div key={items[5+(rotation+3)%4]} style={{height:'179px', width:'179px', position: 'absolute', bottom:0, left: 0}}>
-              {disabled?leaf(items[5+(rotation+3)%4]):upperLeaf((3+rotation)%4)}
+              {disabled?leaf(items[5+(rotation+3)%4]):upperLeaf((7-rotation)%4)}
             </div>
             </SortableContext>
         </div>
