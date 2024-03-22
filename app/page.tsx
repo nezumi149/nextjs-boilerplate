@@ -101,6 +101,7 @@ const Home = () => {
       const a = parseInt(items[i]);
       leafSetterRotation[a]((leafRotation[a]+increment)%4);
     });
+    setDummy((dummy+increment)%4);
   };
 
   const lowerLeafStyle = (index:number):React.CSSProperties => ({
@@ -195,10 +196,10 @@ const Home = () => {
               {disabled?leaf(items[5+(rotation+1)%4]):upperLeaf((1+rotation)%4)}
             </div>
             <div key={items[5+(rotation+2)%4]} style={{height:'179px', width:'179px', position: 'absolute', bottom:0, right: 0}}>
-              {disabled?leaf(items[5+(rotation+2)%4]):upperLeaf((1+rotation)%4)}
+              {disabled?leaf(items[5+(rotation+2)%4]):upperLeaf((2+rotation)%4)}
             </div>
             <div key={items[5+(rotation+3)%4]} style={{height:'179px', width:'179px', position: 'absolute', bottom:0, left: 0}}>
-              {disabled?leaf(items[5+(rotation+3)%4]):upperLeaf((1+rotation)%4)}
+              {disabled?leaf(items[5+(rotation+3)%4]):upperLeaf((3+rotation)%4)}
             </div>
             </SortableContext>
         </div>
