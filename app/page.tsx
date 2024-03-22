@@ -203,13 +203,13 @@ const Home = () => {
             </SortableContext>
         </div>
         <button style={{top:'0px', left:'0px', width:'30px', position: 'absolute'}}>
-          <Image width={30} height = {30} alt="counterclockwise" src={ccw} onClick={handleRotate(3)} />
+          <Image width={30} height = {30} alt="counterclockwise" src={ccw} onClick={() => handleRotate(3)} />
         </button>
         <button onClick={() => setDisabled(!disabled)} style={{bottom: '-20px', margin: 'auto', position: 'absolute'}}>
           {disabled ? "Unlock" : "Submit"}
         </button>
         <button style={{top:'0px', right:'0px', width:'30px', position: 'absolute'}}>
-          <Image width={30} height = {30} alt="clockwise" src={cw} onClick={handleRotate(1)} />
+          <Image width={30} height = {30} alt="clockwise" src={cw} onClick={() => handleRotate(1)} />
         </button>
       </div>
       <div id='lowerLeafPanel' style={{height: '179px', width: '895px', position: 'absolute', opacity: '0.6', backgroundColor: '#DDDDDD', bottom:'0px'}}>
